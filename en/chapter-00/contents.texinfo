@@ -57,7 +57,7 @@ project is its recurring theme. It is distilled into the book in code
 examples, exercises and dedicated chapters. At the end of the book,
 you will have written a replica of this historic video game. The final
 @cuis{} package of this game can be downloaded from the book
-repository@footnote{@url{https://github.com/Cuis-Smalltalk/TheCuisBook/blob/master/Spacewar!.pck.st}}.
+repository@footnote{@url{https://github.com/DrCuis/TheCuisBook/blob/master/Spacewar!.pck.st}}.
 
 
 @heading How to use the book
@@ -67,7 +67,7 @@ The reader can study @cuis{} from two versions of the book:
 @itemize
 
  @item @strong{Online.} With a web browser at the
- @url{https://cuis-smalltalk.github.io/TheCuisBook} address. The book
+ @url{https://DrCuis.github.io/TheCuisBook} address. The book
  is structured in chapters and sections, displayed one at a time. It
  is a very flexible way to study the book: you can open several
  chapters and appendices on different tabs in your web browser. It
@@ -75,7 +75,7 @@ The reader can study @cuis{} from two versions of the book:
 
  @item @strong{Offline.} In a single PDF file you download and read
  offline. It can be printed as a nice paper book. The most recent
- build can be found at @url{https://github.com/Cuis-Smalltalk/TheCuisBook}.
+ build can be found at @url{https://github.com/DrCuis/TheCuisBook}.
 
 @end itemize
 
