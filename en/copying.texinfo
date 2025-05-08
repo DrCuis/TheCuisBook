@@ -9,7 +9,7 @@ Copyright @copyright{} 2020, 2021, 2022, 2023, 2024, 2025 @writers{}
 
 Compilation : @today{}
 
-Documentation source: @url{https://github.com/Cuis-Smalltalk/TheCuisBook} 
+Documentation source: @url{https://github.com/DrCuis/TheCuisBook} 
 
 The contents of this book are protected under Creative Commons
 Attribution-ShareAlike 4.0 International.
