@@ -57,13 +57,13 @@ background: #fafaf1;
 margin: 1em 0em 1em 0em;
 color: #033DA3;
 border-radius: 8px;
+overflow: auto;
 }
 
 pre.example-preformatted, pre.smallexample-preformatted
 {
 font-size: 120%;
 margin: 0.5em 1em .5em 1em;
-
 }
 
 pre.verbatim
@@ -137,6 +137,10 @@ blockquote.indentedblock > p > img {
     float: left;
 }
 
+
+div.float {
+overflow: auto;
+}
 
 img
 {
@@ -230,6 +234,7 @@ div.nav-panel
     border-bottom: 3px solid #85b75f;
     margin-left: -7%;
     margin-right: -7%;
+    overflow: auto;
 }
 
 table.cartouche
