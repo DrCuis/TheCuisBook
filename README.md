@@ -3,9 +3,9 @@ A book about Cuis Smalltalk. A community effort to bring documentation
 to people new to Smalltalk and even computer programming. The book
 comes in three parts.
 
-The book includes examples and exercises. The solutions of the
-exercises are in the annexes. We encourage writers to provides both
-examples then exercises with solutions in annexes.
+The book includes examples and exercises. The solutions to the
+exercises are in the annexes. We encourage writers to provide both
+examples and exercises with solutions in the annexes.
 
 HTML - https://DrCuis.github.io/TheCuisBook/
 
@@ -26,7 +26,7 @@ script to output HTML and PDF.
 
 ## Documentation
 The Texinfo format is mainly pure text. Tagging is done with @
-command, for example to `@strong{strong}` or
+commands, for example, `@strong{strong}` or
 `@url{http://cuis-smalltalk.org}`
 
 To learn more about the Texinfo format:
@@ -36,7 +36,7 @@ To learn more about the Texinfo format:
 
 ## TODO
 
-* So far, the current index mixes both concepts and methods.  It will
+* So far, the current index mixes both concepts and methods.  It would
 be nicer to have two separate indexes: one for the concepts and
 another one for the methods.
 
@@ -44,7 +44,7 @@ another one for the methods.
 
 ### General recommendations
 **Indentation.** Indent with 0, 3, 6, etc spaces when writing code. Do
-not use tab unless the text editor converts it to spaces.
+not use tabs unless the text editor converts them to spaces.
 
 **Index.** Index when important concepts are explained. We write index
 entries in lowercase! Insert an index just after a section title, and just
@@ -53,7 +53,7 @@ index: `@cindex tools @subentry workspace`
 
 Regarding indexing messages, here is the rule:
 
-  * When the message name is meaningful, index with messsage name
+  * When the message name is meaningful, index with the message name
     itself with the appropriate tag. For example `@cindex number
     @subentry @method{isPrime}`
     
@@ -87,15 +87,15 @@ flow of text
 **@dfn{Workspace}.** To emphasize a new term when it is first
 defined. Use only once.
 
-**@clicksequence{}** To describe click sequence, for example:
+**@clicksequence{}** To describe a click sequence, for example:
 
 `...@clicksequence{Background click @click{} Open... @click{}
 Workspace}...`
 
 **@smalltalkExample{smalltalk code}.** To display in its own block
 environment an example of Smalltalk code. Use this when writing an
-example that doesn't need to be added to list of examples nor referenced
-from elsewhere.
+example that doesn't need to be added to the list of examples nor
+referenced from elsewhere.
 
 `@smalltalkExemple{@{1 . 2 . 3 @} collect: [:x |
    x @@ 3]}`
