@@ -532,7 +532,7 @@ pane.
 With the mouse pointer over the class category pane of the Browser --
 the left-most one -- just do:
 
-...@clicksequence{right mouse click @click{} @label{add item}}... then
+...@clicksequence{right mouse click @click{} @label{Add Category}}... then
 key in @emph{Spacewar!}
 
 
