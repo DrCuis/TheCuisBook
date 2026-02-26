@@ -552,7 +552,7 @@ We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
 representing the name of the class we want to create. Let's start with
 @smalltalk{#SpaceWar}. To save our class, while over the class
 declaration code do ...@clicksequence{right mouse click @click{}
-@label{Accept}}... @cuis{} will ask for your initials and name
+@label{Save}}... @cuis{} will ask for your initials and name
 if it hasn't before. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
 
 Then simply repeat the process for each of @smalltalk{#SpaceShip},
