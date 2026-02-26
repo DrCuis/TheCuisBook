@@ -180,6 +180,7 @@ In @ref{repeatLoop}, the @msg{newFrom:} message is sent to the class
 elements from the array given in the argument; @emph{@method{newFrom:}} is
 another class method.
 
+@page
 @c instance method
 @cindex instance @subentry method @seeentry{method}
 @cindex method @subentry instance method
