@@ -128,6 +128,12 @@ In the raw source code below, understand the ``_'' character as ``@assign{}''.
 @smallformat
 @verbatiminclude ../Spacewar!.pck.st
 @end smallformat
+@appendix Set-up environment script
+@anchor{set-up-environment-script}
+@smallformat
+@verbatiminclude ../scripts/setUpEnvironment.st
+@end smallformat
+
 @c Indexes
 @node Indexes
 @appendix Conceptual index

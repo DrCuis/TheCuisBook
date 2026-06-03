@@ -1,34 +1,62 @@
-| list area morph extent |
-"Delete all windows but the taskbar"
-list _ UISupervisor ui submorphs reject: [:aMorph | aMorph is: #TaskbarMorph].
-list do: [:each | each delete].
-"Change to Dark theme"
+| world morph area extent |
+"Report by any mean error"
+Transcript
+   showOnDisplay: false;
+   logToFile: true;
+   logToStdout: true.
+"Install change set"
+ChangeSet installNewUpdates.
+"System configurations"
+Utilities setAuthorName: 'Oliver Lawrence Dupont' initials: 'old'.
+Preferences at: #logDebuggerStackToFile put: true.
+Preferences at: #autoNumberUserChanges put: false.
+Preferences at: #focusFollowsMouse put: true.
+"Install package and your code"
 Feature require: #'Theme-Themes'.
+"Feature require: #'MyPackage'."
+"Morphic operation, to handle with care"
+world := UISupervisor ui.
+[
+Display fullScreenMode: true.
+(Delay forSeconds: 1) wait.
+UISupervisor whenUIinSafeState: [
+(world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph])
+   do: [:each | each delete].
+"Change to Dark theme"
 DarkTheme beCurrent.
 "Adjust font size"
-Preferences smallFonts.
+Preferences at: #defaultFontSize put: 12.
 "Adjust taskbar size"
-morph _ UISupervisor ui submorphs first.
-morph scale: 1/2.
+morph := UISupervisor ui taskbar.
+morph scale: 1 / 2.
 "Compute the available free space for windows placement"
-area _ RealEstateAgent maximumUsableArea extendBy: 0 @ morph morphHeight negated.
-extent _ area extent // 2.
+area := RealEstateAgent maximumUsableArea
+   extendBy: 0 @ morph morphHeight negated.
+extent := area extent // 2.
 "Open a few System Browsers"
-BrowserWindow openBrowser morphBounds: (0 @ 0 extent: extent).
-BrowserWindow openBrowser morphBounds: (area width // 2 @ 0 extent: extent).
+Browser open
+   morphPosition: 0 @ 0;
+   morphExtent: extent.
+Browser open
+   morphPosition: area width // 2 @ 0;
+   morphExtent: extent.
 "Open a System Browser on a specific class"
-morph _ BrowserWindow openBrowser morphBounds: (area extent // 2 extent: extent).
+morph := Browser open
+   morphPosition: area extent // 2;
+   morphExtent: extent.
 morph model setClass: Integer selector: nil.
 "Open a Workspace with some default contents"
-Workspace openWorkspace.
-"dirty hack because of Workspace inconsistency"
-morph _ UISupervisor ui submorphs detect: [:aMorph | aMorph class = WorkspaceWindow].
+morph := Workspace open.
 morph model actualContents: '"Some code"
 1 + 2.
 "Other code"
 5 * 3.'.
-morph morphBounds: (0 @ (area height // 2) extent: extent x @ (2 / 3 * extent y)).
+morph
+   morphPosition: 0 @ (area height // 2);
+   morphExtent: extent x @ (2 / 3 * extent y).
 "Open a transcript for logs"
-TranscriptWindow openTranscript morphBounds: 
-	(0 @ (area height // 2 + (2 / 3 * extent y)) 
-		extent: extent x @ (1 / 3 * extent y )).
+Transcript open
+   morphPosition: 0 @ (area height // 2 + (2 / 3 * extent y));
+   morphExtent: extent x @ (1 / 3 * extent y).
+    ]
+] fork

@@ -416,10 +416,10 @@ tool (@xref{ch02-InstalledPackages}).
 manage a set of external packages (i.e. code that is maintained
 independently and outside @cuis{} but closely related to it).
 
-Package files are simple text files, encoded for latin alphabet (ISO
-8859-15) and handled without problems by GitHub. @cuis{} uses the LF
-(ascii code 10) newline convention, as preferred in GitHub. This
-allows Git/GitHub to diff versions, and merge branches.
+Package files are simple text files, encoded in UTF-8 and handled
+without problems by GitHub. @cuis{} uses the LF (ascii code 10)
+newline convention, as preferred in GitHub. This allows Git/GitHub to
+diff versions, and merge branches.
 
 Separate GitHub repositories are used for projects, i.e. package or
 set of closely related packages that are always loaded and maintained
@@ -502,7 +502,9 @@ example @command{squeakVM Cuis5.0.image -s setUpEnvironement.st} where
 @file{setUpEnvironement.st}. is a file containing Smalltalk code. A
 real life example may look like:
 @verbatim
-../cogspur/squeak Cuis5.0-4426 -s ../scripts/setUpEnvironment.st
+cd Cuis-Smalltalk-Dev
+./CuisVM.app/Contents/Linux-x86_64/squeak CuisImage/Cuis7.9-7977 \
+        -s setUpEnvironment.st
 @end verbatim
 
 We describe in detail an example of a set up script organizing the
@@ -513,66 +515,83 @@ handling.
 
 @figure{Environment of an image started with the set up script,ch10-ImageSetUp,12}
 
-@cindex morph @subentry world
-Let's start by removing the open windows.
-The code is placed in a block which is sent the message `#fork`
-in order to wait for the environment to be properly initialized.
 
-@smalltalkExample{| world morph area extent | 
-world @assign{} UISupervisor ui.
+First, we set a few preferences, not related to the @sc{gui}:
+
+@smalltalkExample{
+| world morph area extent |
+"Report by any mean error"
+Transcript
+   showOnDisplay: false;
+   logToFile: true;
+   logToStdout: true.
+"Install change set"
+ChangeSet installNewUpdates.
+"System configurations"
+Utilities setAuthorName: 'Oliver Lawrence Dupont' initials: 'old'.
+Preferences at: #logDebuggerStackToFile put: true.
+Preferences at: #autoNumberUserChanges put: false.
+Preferences at: #focusFollowsMouse put: true.
+"Install package and your code"
+Feature require: #'Theme-Themes'.
+"Feature require: #'MyPackage'."}
+
+@cindex morph @subentry world
+We continue with the operations related to the @sc{gui}. Let's start
+by removing the open windows.  The code is placed in a block which is
+sent the message @msg{fork} in order to wait for the environment to be
+properly initialized.
+
+@smalltalkExample{
+"Morphic operation, to handle with care"
+world := UISupervisor ui.
 [
-    | area extent morph | "used later"
+    Display fullScreenMode: true.
+    (Delay forSeconds: 1) wait.
     UISupervisor whenUIinSafeState: [
-        children @assign{} world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph].
-        children do: [:child | child delete].
+        (world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph])
+            do: [:each | each delete].
     ]
 ] fork}
 
-The whole user interface world of @cuis{} is a kind of Morph, a
-@class{WorldMorph} instance. Its submorphs are windows, menus, the
-taskbar or any kind of morph the user can interact with. To access
-this @class{WorldMorph} instance you ask to the @class{UISupervisor}
-with the @msg{ui} message. Once we select all the morphs in the world
-but the taskbar -- really @msg{reject:} it -- we @msg{delete} them
-from the world.
+We first request @cuis{} to display itself full screen, the delay is
+needed to ensure the @cuis{} window is full screen before proceeding to
+the remaining part of the set-up script.  The whole user interface
+world of @cuis{} is a kind of Morph, a @class{WorldMorph}
+instance. Its submorphs are windows, menus, the taskbar or any kind of
+morph the user can interact with. To access this @class{WorldMorph}
+instance you ask to the @class{UISupervisor} with the @msg{ui}
+message. Once we select all the morphs in the world but the taskbar --
+really @msg{reject:} it -- we @msg{delete} them from the world.
 
-Next, we change the preferences.
+Next, we change the preferences related to the @sc{gui}.
 Place the following code after the line above that deletes the children.
 
 @smalltalkExample{
 "Change to Dark theme"
-Feature require: #'Theme-Themes'.
 DarkTheme beCurrent.
 "Adjust font size"
 Preferences at: #defaultFontSize put: 12.
 "Adjust taskbar size"
-morph @assign{} UISupervisor ui taskbar.
-morph scale: 1 / 2.
-Display fullScreenMode: true.
-self runningWorld doOneCycleNow.}
+morph := UISupervisor ui taskbar.
+morph scale: 1 / 2.}
 
-We require Theme-Themes package; as it is not installed on the default
-image, it will be searched on the disk for installation. Regarding the
-taskbar access, remember we deleted all the morphs but the taskbar
-from the world, therefore the taskbar is really the first in the sub
-morphs collection of the world. Finally, we update the scale of the
-taskbar and we request @cuis{} to display itself full screen. As we
-changed several visual parts, we request one update cycle of the
-environment (i.e. the running world in @cuis{} terminology).
+We required earlier Theme-Themes package; as it is not installed on
+the default image, it will be searched on the disk for
+installation. Finally, we update the scale of the taskbar.
 
 Before installing the tools, we ask a @class{RealEstateAgent} the free
 area. Sadly this agent does not take into consideration the area
 occupied by the taskbar, so we need to tweak its answer. Then we
-compute a quarter of this free area extent (half in width and half
-in height make a quarter of the whole free area):
+compute a quarter of this free area extent (half in width and half in
+height make a quarter of the whole free area):
 
 Place the following code after the previous code.
 
-@smalltalkExample{
-"Compute the available free space for windows placement"
-area @assign{} RealEstateAgent maximumUsableArea
+@smalltalkExample{"Compute the available free space for windows placement"
+area := RealEstateAgent maximumUsableArea
    extendBy: 0 @@ morph morphHeight negated.
-extent @assign{} area extent // 2.}
+extent := area extent // 2.}
 
 Now we are ready to install a few tools. First three browsers each
 occupying a quarter of the screen:
@@ -585,7 +604,7 @@ Browser open
    morphPosition: area width // 2 @@ 0;
    morphExtent: extent.
 "Open a System Browser on a specific class"
-morph @assign{} Browser open
+morph := Browser open
    morphPosition: area extent // 2;
    morphExtent: extent.
 morph model setClass: Integer selector: nil.}
@@ -614,6 +633,10 @@ Transcript open
 
 Of course you should adjust the argument of the @msg{actualContents:}
 message to meaningful code for your usage.
+
+Visit the set-up environment script
+@ref{set-up-environment-script,appendix,appendix} for the complete
+code.
 
 @node Source Code File
 @section Source Code File

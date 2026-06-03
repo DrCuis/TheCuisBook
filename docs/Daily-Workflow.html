@@ -18,7 +18,7 @@ valuable.
 
 
 
-Compilation : July 28, 2025
+Compilation : June 3, 2026
 
 Documentation source: https://github.com/DrCuis/TheCuisBook 
 
@@ -99,10 +99,10 @@ tool (See <a class="xref" href="Spacewar_0021-models.html#ch02_002dInstalledPack
 manage a set of external packages (i.e. code that is maintained
 independently and outside Cuis-Smalltalk but closely related to it).
 </p>
-<p>Package files are simple text files, encoded for latin alphabet (ISO
-8859-15) and handled without problems by GitHub. Cuis-Smalltalk uses the LF
-(ascii code 10) newline convention, as preferred in GitHub. This
-allows Git/GitHub to diff versions, and merge branches.
+<p>Package files are simple text files, encoded in UTF-8 and handled
+without problems by GitHub. Cuis-Smalltalk uses the LF (ascii code 10)
+newline convention, as preferred in GitHub. This allows Git/GitHub to
+diff versions, and merge branches.
 </p>
 <p>Separate GitHub repositories are used for projects, i.e. package or
 set of closely related packages that are always loaded and maintained
@@ -182,7 +182,9 @@ GNU/Linux, you ask Cuis-Smalltalk to run a script with the <samp class="option">
 example <code class="command">squeakVM Cuis5.0.image -s setUpEnvironement.st</code> where
 <samp class="file">setUpEnvironement.st</samp>. is a file containing Smalltalk code. A
 real life example may look like:
-</p><pre class="verbatim">../cogspur/squeak Cuis5.0-4426 -s ../scripts/setUpEnvironment.st
+</p><pre class="verbatim">cd Cuis-Smalltalk-Dev
+./CuisVM.app/Contents/Linux-x86_64/squeak CuisImage/Cuis7.9-7977 \
+        -s setUpEnvironment.st
 </pre>
 <p>We describe in detail an example of a set up script organizing the
 environment as seen in <a class="ref" href="#ch10_002dImageSetUp">Figure 9.13</a>. It is interesting
@@ -193,61 +195,79 @@ handling.
 <div class="float" id="ch10_002dImageSetUp">
 <div class="center"><img class="image" src="ch10-ImageSetUp.png" alt="ch10-ImageSetUp">
 </div><div class="caption"><p><strong class="strong">Figure 9.13: </strong>Environment of an image started with the set up script</p></div></div>
-<a class="index-entry-id" id="index-morph-world"></a>
-<p>Let&rsquo;s start by removing the open windows.
-The code is placed in a block which is sent the message &lsquo;#fork&lsquo;
-in order to wait for the environment to be properly initialized.
+
+<p>First, we set a few preferences, not related to the <small class="sc">GUI</small>:
 </p>
 <div class="example smallexample">
-<pre class="example-preformatted">| world morph area extent | 
+<pre class="example-preformatted">| world morph area extent |
+&quot;Report by any mean error&quot;
+Transcript
+   showOnDisplay: false;
+   logToFile: true;
+   logToStdout: true.
+&quot;Install change set&quot;
+ChangeSet installNewUpdates.
+&quot;System configurations&quot;
+Utilities setAuthorName: 'Oliver Lawrence Dupont' initials: 'old'.
+Preferences at: #logDebuggerStackToFile put: true.
+Preferences at: #autoNumberUserChanges put: false.
+Preferences at: #focusFollowsMouse put: true.
+&quot;Install package and your code&quot;
+Feature require: #'Theme-Themes'.
+&quot;Feature require: #'MyPackage'.&quot;
+</pre></div>
+
+<a class="index-entry-id" id="index-morph-world"></a>
+<p>We continue with the operations related to the <small class="sc">GUI</small>. Let&rsquo;s start
+by removing the open windows.  The code is placed in a block which is
+sent the message <code class="code">#fork</code> in order to wait for the environment to be
+properly initialized.
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">&quot;Morphic operation, to handle with care&quot;
 world := UISupervisor ui.
 [
-    | area extent morph | &quot;used later&quot;
+    Display fullScreenMode: true.
+    (Delay forSeconds: 1) wait.
     UISupervisor whenUIinSafeState: [
-        children := world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph].
-        children do: [:child | child delete].
+        (world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph])
+            do: [:each | each delete].
     ]
 ] fork
 </pre></div>
 
-<p>The whole user interface world of Cuis-Smalltalk is a kind of Morph, a
-<code class="code">WorldMorph</code> instance. Its submorphs are windows, menus, the
-taskbar or any kind of morph the user can interact with. To access
-this <code class="code">WorldMorph</code> instance you ask to the <code class="code">UISupervisor</code>
-with the <code class="code">#ui</code> message. Once we select all the morphs in the world
-but the taskbar &ndash; really <code class="code">#reject:</code> it &ndash; we <code class="code">#delete</code> them
-from the world.
+<p>We first request Cuis-Smalltalk to display itself full screen, the delay is
+needed to ensure the Cuis-Smalltalk window is full screen before proceeding to
+the remaining part of the set-up script.  The whole user interface
+world of Cuis-Smalltalk is a kind of Morph, a <code class="code">WorldMorph</code>
+instance. Its submorphs are windows, menus, the taskbar or any kind of
+morph the user can interact with. To access this <code class="code">WorldMorph</code>
+instance you ask to the <code class="code">UISupervisor</code> with the <code class="code">#ui</code>
+message. Once we select all the morphs in the world but the taskbar &ndash;
+really <code class="code">#reject:</code> it &ndash; we <code class="code">#delete</code> them from the world.
 </p>
-<p>Next, we change the preferences.
+<p>Next, we change the preferences related to the <small class="sc">GUI</small>.
 Place the following code after the line above that deletes the children.
 </p>
 <div class="example smallexample">
 <pre class="example-preformatted">&quot;Change to Dark theme&quot;
-Feature require: #'Theme-Themes'.
 DarkTheme beCurrent.
 &quot;Adjust font size&quot;
 Preferences at: #defaultFontSize put: 12.
 &quot;Adjust taskbar size&quot;
 morph := UISupervisor ui taskbar.
 morph scale: 1 / 2.
-Display fullScreenMode: true.
-self runningWorld doOneCycleNow.
 </pre></div>
 
-<p>We require Theme-Themes package; as it is not installed on the default
-image, it will be searched on the disk for installation. Regarding the
-taskbar access, remember we deleted all the morphs but the taskbar
-from the world, therefore the taskbar is really the first in the sub
-morphs collection of the world. Finally, we update the scale of the
-taskbar and we request Cuis-Smalltalk to display itself full screen. As we
-changed several visual parts, we request one update cycle of the
-environment (i.e. the running world in Cuis-Smalltalk terminology).
+<p>We required earlier Theme-Themes package; as it is not installed on
+the default image, it will be searched on the disk for
+installation. Finally, we update the scale of the taskbar.
 </p>
 <p>Before installing the tools, we ask a <code class="code">RealEstateAgent</code> the free
 area. Sadly this agent does not take into consideration the area
 occupied by the taskbar, so we need to tweak its answer. Then we
-compute a quarter of this free area extent (half in width and half
-in height make a quarter of the whole free area):
+compute a quarter of this free area extent (half in width and half in
+height make a quarter of the whole free area):
 </p>
 <p>Place the following code after the previous code.
 </p>
@@ -302,6 +322,10 @@ Transcript open
 
 <p>Of course you should adjust the argument of the <code class="code">#actualContents:</code>
 message to meaningful code for your usage.
+</p>
+<p>Visit the set-up environment script
+<a class="ref" href="Spacewar_0021-Source-Code.html#set_002dup_002denvironment_002dscript">appendix</a> for the complete
+code.
 </p>
 </div>
 </div>
