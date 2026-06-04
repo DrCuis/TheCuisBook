@@ -330,7 +330,7 @@ fibo
 Index access to the elements of a collection is done with a variety of
 messages. The index naturally ranges from 1 to the collection size:
 @smalltalkExample{fibo at: 1 @result{} 1
-fibo at: 6 @result{} 5
+fibo at: 6 @result{} 8
 fibo last @result{} 21
 fibo indexOf: 2 @result{} 3
 fibo at: fibo size @result{} 21}
@@ -896,9 +896,9 @@ is subjected to:
 @smalltalkExampleCaption{Space ship gravity,spaceShipGravity,
 SpaceShip>>gravity
 "Compute the gravity acceleration vector"
-   | position |
-   position @assign{} self morphPosition.
-   @return{} [-10 * self mass * self starMass / (position r raisedTo: 3) * position]
+   | shipPosition |
+   shipPosition @assign{} self morphPosition.
+   @return{} [-10 * self mass * self starMass / (shipPosition r raisedTo: 3) * shipPosition]
       on: Error do: [0 @@ 0]}
 
 Observe the message @smalltalk{#starMass} sent to the spaceship herself.

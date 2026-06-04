@@ -209,9 +209,9 @@ is subjected to:
 <div class="example smallexample">
 <pre class="example-preformatted">SpaceShip&gt;&gt;gravity
 &quot;Compute the gravity acceleration vector&quot;
-   | position |
-   position := self morphPosition.
-   ^ [-10 * self mass * self starMass / (position r raisedTo: 3) * position]
+   | shipPosition |
+   shipPosition := self morphPosition.
+   ^ [-10 * self mass * self starMass / (shipPosition r raisedTo: 3) * shipPosition]
       on: Error do: [0 @ 0]
 </pre></div>
 <div class="caption"><p><strong class="strong">Example 4.21: </strong>Space ship gravity</p></div></div>

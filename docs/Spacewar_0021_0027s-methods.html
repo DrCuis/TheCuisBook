@@ -138,8 +138,6 @@ class. Of course we need to use the System Browser:
   &quot;We want to capture keyboard and mouse events, 
   start the game loop(step) and initialize the actors.&quot;
   super initialize.
-  color := self defaultColor.
-  self setProperty: #'handlesKeyboard' toValue: true.
   self setProperty: #'handlesMouseOver:' toValue: true.
   self startSteppingStepTime: self stepTime.
   self initializeActors
@@ -231,6 +229,9 @@ space ship position, heading, and velocity before being fired.
 </pre></div>
 <div class="caption"><p><strong class="strong">Example 5.9: </strong>Firing a torpedo from a space ship in motion</p></div></div>
 
+<p>Don&rsquo;t write this method yet, wait the next chapter and the
+redefinition of these visual objects as <code class="code">Morph</code>.
+</p>
 <div class="float" id="ch05_002dSpacewarGamePlay">
 <div class="center"><img class="image" src="ch05-SpacewarGamePlay.png" alt="ch05-SpacewarGamePlay">
 </div><div class="caption"><p><strong class="strong">Figure 5.1: </strong>Spacewar! torpedoes around</p></div></div>

@@ -476,8 +476,6 @@ As a reminder, proceed as follows (if necessary observe
   "We want to capture keyboard and mouse events@comma{} 
   start the game loop(step) and initialize the actors."
   super initialize.
-  color @assign{} self defaultColor.
-  self setProperty: #'handlesKeyboard' toValue: true.
   self setProperty: #'handlesMouseOver:' toValue: true.
   self startSteppingStepTime: self stepTime.
   self initializeActors}
@@ -553,6 +551,9 @@ SpaceShip>>fireTorpedo
     color: self color muchLighter.
   owner addTorpedo: torpedo}
 
+
+Don't write this method yet, wait the next chapter and the
+redefinition of these visual objects as @class{Morph}.
 
 @figure{Spacewar! torpedoes around,ch05-SpacewarGamePlay,8}
 

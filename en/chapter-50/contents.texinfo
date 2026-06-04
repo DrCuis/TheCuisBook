@@ -219,11 +219,11 @@ Torpedo>>heading: aFloat
 @smallexample
 SpaceShip>>left
 "Rotate the ship to its left"
-   heading @assign{} heading + 0.1
+   heading @assign{} heading - 0.1
 
 SpaceShip>>right
 "Rotate the ship to its right"
-   heading @assign{} heading - 0.1
+   heading @assign{} heading + 0.1
 @end smallexample
 
 @subheading @ref{shipAcceleration}
