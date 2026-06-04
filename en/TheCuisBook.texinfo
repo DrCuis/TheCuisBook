@@ -124,14 +124,20 @@ You are reading the Cuis Book!
 @c The Spacewar source code
 @node Spacewar! Source Code
 @appendix Spacewar! Source Code
+Download the @url{https://github.com/DrCuis/TheCuisBook/blob/main/code/SpaceWar!.pck.st,SpaceWar! package}.
+@*
 In the raw source code below, understand the ``_'' character as ``@assign{}''.
 @smallformat
-@verbatiminclude ../Spacewar!.pck.st
+@verbatiminclude ../code/Spacewar!.pck.st
 @end smallformat
+@c The Set-up environment script
+@node Set-up environment script
 @appendix Set-up environment script
 @anchor{set-up-environment-script}
+Download the @url{https://github.com/DrCuis/TheCuisBook/blob/main/code/setUpEnvironment.st,Set-up environment script}.
+@*
 @smallformat
-@verbatiminclude ../scripts/setUpEnvironment.st
+@verbatiminclude ../code/setUpEnvironment.st
 @end smallformat
 
 @c Indexes

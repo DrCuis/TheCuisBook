@@ -97,8 +97,7 @@ are each moving just a bit, in sequence.
 @c event-handling->events-preference
 @c events->events-handling
 
-@cindex event @subentry testing
-@cindex event @subentry handling
+@cindex event @subentry introduction
 In @ref{A brief introduction to Inspectors}, we explained how to set
 properties for an individual morph instance to handle a
 specific event. In this
@@ -173,7 +172,7 @@ described above.
 
 @subsection Mouse event
 @cindex event @subentry mouse
-@cindex mouse
+@cindex mouse @seealso{event}
 
 @subsubheading Mouse cursor enters game play
 @cindex event @subentry testing @subentry mouse over
@@ -181,16 +180,16 @@ described above.
 We want to catch events when the mouse cursor moves over our
 @class{SpaceWar} morph.
 
-@exercise{Get notified of mouse move-over event, handleMouseOver,
+@exercise{Get notified of mouse 'move over' event, handleMouseOver,
 @emph{Which method should return true to let the game play be notified
-with a dedicated messages that the mouse cursor enters or leaves? In which
-class should we implement this method?}}
+with a dedicated messages that the mouse cursor enters or leaves? In
+which class should we implement this method?}}
 
 Once we make explicit we want the game play to receive mouse move-over
 events, we need to set the behavior accordingly with dedicated
 methods.
 
-@cindex event @subentry handling @subentry mouse enter
+@cindex event @subentry mouse enter
 Each time the mouse cursor enters the game play, we want to:
 
 @itemize
@@ -217,7 +216,7 @@ sent to the game play to be notified the mouse cursor enters the game
 play area?  How should the matching method be written?}}
 
 @subsubheading Mouse cursor leaves game play 
-@cindex event @subentry handling @subentry mouse-enter
+@cindex event @subentry mouse enter
 
 We also want to be informed when the mouse cursor leaves our
 @class{SpaceWar} morph. Thanks to the work done in
@@ -230,7 +229,7 @@ the behavior when the mouse cursor leaves the game play:
   @item @strong{Release keyboard focus.} We tell @cuis{} the game play
   does not want keyboard focus:
 
-  @smalltalkExample{event hand releaseKeyboardFocus: self}
+  @smalltalkExample{event hand releaseKeyboardFocusIf: self}
 
   @item @strong{Pause the game.} We stop the continuous
   @emph{stepping} update of the game:
@@ -267,7 +266,6 @@ SpaceWar>>keyboardFocusChange: gotFocus
 
 @subsection Keyboard event
 @cindex event @subentry keyboard
-@cindex event @subentry testing @subentry keyboard
 
 To control the space ships, we use the keyboard. Therefore we want the
 game play to be notified of keyboard events.
@@ -276,13 +274,11 @@ game play to be notified of keyboard events.
 out which method should return true to let the game be notified of
 keyboard event.}}
 
-@cindex event @subentry handling @subentry keyboard
 We can decide to be notified of the key down or key up event and also
 key down then up event (@dfn{key stroke}). As long as our
-@class{SpaceWar} morph responds true to the @msg{handlesKeyboard}
-message, it receives the messages @msg{keyUp:}, @msg{keyDown:} and
-@msg{keyStroke:}. By default, the matching methods in the
-@class{Morph} class do nothing.
+@class{SpaceWar} morph owen the keyboard focus, it receives the
+messages @msg{keyUp:}, @msg{keyDown:} and @msg{keyStroke:}. By
+default, the matching methods in the @class{Morph} class do nothing.
 
 The argument of these messages is a @class{KeyboardEvent} object to
 which, among other things, you can ask the @msg{keyCharacter} of the

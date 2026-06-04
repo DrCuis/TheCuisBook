@@ -752,8 +752,11 @@ SpaceWar>>collisionsTorpedoesStar
 @c Chapter 8
 @node Events (Solutions)
 @unnumberedsec Events
+@cindex event @subentry mouse
 
 @subheading @ref{handleMouseOver}
+@cindex event @subentry testing @subentry @msg{handleMouseOver:}
+
 The method @method{handlesMouseOver:}, implemented in the
 @class{SpaceWar} morph class, returns true so the game play is
 informed of mouse over events in dedicated methods.
@@ -780,21 +783,31 @@ play. Therefore we add the homonym method to the @class{SpaceWar}
 class:
 @smallexample
 SpaceWar>>mouseLeave: event
-   event hand releaseKeyboardFocus: self.
+   event hand releaseKeyboardFocusIf: self.
    self stopStepping
 @end smallexample
 
 @subheading @ref{keyboardEvent}
-The @msg{handlesKeyboard} message is sent to a morph to know if it
-wants to receive keyboard event. The morph responds true to this
-message to state its interest on keyboard event. We implement the
-method in the @class{SpaceWar} class:
+@cindex event @subentry keyboard @subentry focus
+
+The @msg{handlesKeyboardFocus} message is sent to a morph to know if
+it wants to receive the keyboard focus. By default, the morph responds
+@smalltalk{true} to this message to state its interest on keyboard
+event. Therefore, we don't need to implement it in the
+@class{SpaceWar} class:
 @smallexample
-SpaceWar>>handlesKeyboard
+Morph>>handlesKeyboardFocus
    @return{} true
 @end smallexample
 
+To be more precise, our game manually sets and unsets the keyboard
+focus when the mouse enters or leaves the game area. In this case,
+even returning @smalltalk{false} to this message does not affect the
+behavior.
+
 @subheading @ref{secondShipControl}
+@cindex event @subentry keyboard @subentry key stroke
+
 We designate the characters as @smalltalk{$w $a $s $d}. We append the
 code below to the method @method{SpaceWar>>keyStroke:}
 @smallexample

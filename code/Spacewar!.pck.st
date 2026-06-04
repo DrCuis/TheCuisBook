@@ -1,6 +1,6 @@
-'From Cuis6.0 [latest update: #6154] on 27 January 2024 at 5:42:28 pm'!
+'From Cuis7.9 [latest update: #7979] on 4 June 2026 at 10:34:23 am'!
 'Description SpaceWar!! game code'!
-!provides: 'Spacewar!!' 1 97!
+!provides: 'Spacewar!!' 1 98!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -78,39 +78,39 @@ Red: a, d, w, s keys!
 !CentralStar commentStamp: '<historical>' prior: 0!
 I am the central start of the game generating a gravity field.!
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 08:34:04'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 1/Oct/2020 08:34:04'!
 color: aColor
 	"Set the receiver's color. "
 	color = aColor ifFalse: [
 		color _ aColor.
 		self redrawNeeded ]! !
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 13:48:54'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 14/Feb/2022 13:48:54'!
 direction
 "I am an unit vector representing the noze direction of the mobile"
 	^Point rho: 1 theta: self heading! !
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 13:48:44'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 14/Feb/2022 13:48:44'!
 heading
 	^ location radians - Float halfPi! !
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 13:53:10'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 14/Feb/2022 13:53:10'!
 heading: aHeading
 	self rotation: aHeading + Float halfPi! !
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 08:34:23'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 1/Oct/2020 08:34:23'!
 mass
 	^ 1! !
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 1/27/2024 15:47:36'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 27/Jan/2024 15:47:36'!
 starMass
 	^ owner starMass! !
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 8/23/2021 11:55:02'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 23/Aug/2021 11:55:02'!
 velocity: aVector
 	velocity _ aVector ! !
 
-!Mobile methodsFor: 'computing' stamp: 'hlsf 1/27/2024 15:47:23'!
+!Mobile methodsFor: 'computing' stamp: 'hlsf 27/Jan/2024 15:47:23'!
 gravity
 "Compute the gravity acceleration vector"
 	| position |
@@ -118,7 +118,7 @@ gravity
 	^ [-10 * self mass * self starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
-!Mobile methodsFor: 'computing' stamp: 'hlsf 8/23/2021 11:52:21'!
+!Mobile methodsFor: 'computing' stamp: 'hlsf 23/Aug/2021 11:52:21'!
 update: t
 "Update the mobile position and velocity "
 	| ai ag newVelocity |
@@ -137,24 +137,24 @@ update: t
 		velocity _ velocity / 2.
 		self morphPosition: self morphPosition negated]! !
 
-!Mobile methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 08:37:29'!
+!Mobile methodsFor: 'initialization' stamp: 'hlsf 1/Oct/2020 08:37:29'!
 initialize
 	super initialize.
 	color _ Color gray.
 	velocity _ 0 @ 0.
 	acceleration _ 0.! !
 
-!Mobile methodsFor: 'testing' stamp: 'hlsf 10/8/2020 22:21:33'!
+!Mobile methodsFor: 'testing' stamp: 'hlsf 8/Oct/2020 22:21:33'!
 isGoingOuterSpace
 "is the mobile going crazy in direction of the outer space?"
 	^ (self morphPosition dotProduct: velocity) > 0 ! !
 
-!Mobile methodsFor: 'testing' stamp: 'jmv 10/28/2021 15:04:22'!
+!Mobile methodsFor: 'testing' stamp: 'jmv 28/Oct/2021 15:04:22'!
 isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
 	^(owner localBounds containsPoint: self morphPosition) not! !
 
-!Mobile methodsFor: 'drawing' stamp: 'hlsf 8/23/2021 11:50:43'!
+!Mobile methodsFor: 'drawing' stamp: 'hlsf 23/Aug/2021 11:50:43'!
 drawOn: canvas polygon: vertices
 	| size |
 	size _ vertices size.
@@ -165,16 +165,16 @@ drawOn: canvas polygon: vertices
 			width: 2 
 			color: color] ! !
 
-!Mobile methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:53:01'!
+!Mobile methodsFor: 'geometry' stamp: 'jmv 28/Oct/2021 14:53:01'!
 localBounds
 
 	^Rectangle encompassing: self class vertices! !
 
-!Mobile class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:09'!
+!Mobile class methodsFor: 'as yet unclassified' stamp: 'hlsf 19/Dec/2020 23:21:09'!
 vertices
 	^ vertices ! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 2/14/2022 13:53:33'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 14/Feb/2022 13:53:33'!
 fireTorpedo
 "Fire a torpedo in the direction of the ship heading with a combined velocity"
 	| torpedo | 
@@ -188,29 +188,29 @@ fireTorpedo
 		color: color muchLighter .
 	owner addTorpedo: torpedo.! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 2/14/2022 14:09:51'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 14/Feb/2022 14:09:51'!
 left
 "Rotate the ship to its left"
 	self heading: self heading - 0.1! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 1/27/2024 15:39:46'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 27/Jan/2024 15:39:46'!
 push
 "Init an accelaration boost"
 	fuel isZero ifTrue: [^ self].
 	fuel := fuel - 1.
 	acceleration := (acceleration + 10) min: 50! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 2/14/2022 14:10:08'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 14/Feb/2022 14:10:08'!
 right
 "Rotate the ship to its right"
 	self heading: self heading + 0.1! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 1/27/2024 15:39:56'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 27/Jan/2024 15:39:56'!
 unpush
 "Stop the accelaration boost"
 	acceleration := acceleration - 5 max: 0! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 1/27/2024 17:42:24'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 27/Jan/2024 17:42:24'!
 drawOn: canvas
 	| vertices  |
 	vertices := self class vertices.
@@ -219,26 +219,26 @@ drawOn: canvas
 	acceleration ifNotZero: [
 		canvas line: vertices third to: 0@acceleration  width: 1 + acceleration / 8 color: Color orange].! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:16:09'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 15/Dec/2020 21:16:09'!
 nose
 	^ self direction * 40! !
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 2/14/2022 13:50:54'!
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 14/Feb/2022 13:50:54'!
 initialize
 	super initialize.
 	self resupply! !
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 2/16/2023 11:54:41'!
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 16/Feb/2023 11:54:41'!
 resupply
 	fuel _ 500.
 	torpedoes _ 10! !
 
-!SpaceShip class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:16'!
+!SpaceShip class methodsFor: 'as yet unclassified' stamp: 'hlsf 19/Dec/2020 23:21:16'!
 initialize
 "SpaceShip initialize"
 	vertices _ {0@-15 . -10@15. 0@10. 10@15}! !
 
-!Torpedo methodsFor: 'computing' stamp: 'hlsf 2/16/2023 11:56:14'!
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 16/Feb/2023 11:56:14'!
 update: t
 "Update the torpedo position"
 	super update: t.
@@ -248,36 +248,36 @@ update: t
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
 	acceleration > 0 ifTrue: [acceleration _ acceleration - 500].! !
 
-!Torpedo methodsFor: 'drawing' stamp: 'hlsf 12/20/2020 13:19:16'!
+!Torpedo methodsFor: 'drawing' stamp: 'hlsf 20/Dec/2020 13:19:16'!
 drawOn: canvas
 	self drawOn: canvas polygon: self class vertices! !
 
-!Torpedo methodsFor: 'initialization' stamp: 'hlsf 12/15/2020 21:12:29'!
+!Torpedo methodsFor: 'initialization' stamp: 'hlsf 15/Dec/2020 21:12:29'!
 initialize
 	super initialize.
 	lifeSpan _ 500.
 	acceleration _ 3000! !
 
-!Torpedo class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:22'!
+!Torpedo class methodsFor: 'as yet unclassified' stamp: 'hlsf 19/Dec/2020 23:21:22'!
 initialize
 "Torpedo initialize"
 	vertices _ {0@-4 . -2@4 . 2@4}! !
 
-!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 16:41:40'!
+!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 16/Sep/2020 16:41:40'!
 starMass
 	^ centralStar mass! !
 
-!SpaceWar methodsFor: 'actions' stamp: 'hlsf 9/21/2020 20:56:33'!
+!SpaceWar methodsFor: 'actions' stamp: 'hlsf 21/Sep/2020 20:56:33'!
 addTorpedo: aTorpedo
 	torpedoes add: aTorpedo.
 	self addMorph: aTorpedo ! !
 
-!SpaceWar methodsFor: 'actions' stamp: 'hlsf 9/21/2020 21:10:33'!
+!SpaceWar methodsFor: 'actions' stamp: 'hlsf 21/Sep/2020 21:10:33'!
 destroyTorpedo: aTorpedo
 	aTorpedo delete.
 	torpedoes remove: aTorpedo ! !
 
-!SpaceWar methodsFor: 'actions' stamp: 'hlsf 10/1/2020 17:29:37'!
+!SpaceWar methodsFor: 'actions' stamp: 'hlsf 1/Oct/2020 17:29:37'!
 teleport: aShip
 "Teleport a ship at a random location"
 	| area randomCoordinate |
@@ -288,28 +288,28 @@ teleport: aShip
 		velocity: 0@0;
 		morphPosition: randomCoordinate value @ randomCoordinate value! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:04:27'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 1/Oct/2020 15:04:27'!
 collisions
 	self collisionsShipsStar.
 	self collisionsTorpedoesStar.
 	self collisionsShipsTorpedoes.
 	self collisionsShips ! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 2/16/2023 12:53:43'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 16/Feb/2023 12:53:43'!
 collisionsShips
 	(ships first collides: ships second) ifTrue: [
 		ships do: [:each |
 			each flashWith: Color red.
 			self teleport: each] ]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 2/16/2023 12:28:09'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 16/Feb/2023 12:28:09'!
 collisionsShipsStar
 	ships do: [ :aShip |
 		(aShip collides: centralStar) ifTrue: [
 			aShip flashWith: Color red.
 			self teleport: aShip ]]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 2/16/2023 12:30:08'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 16/Feb/2023 12:30:08'!
 collisionsShipsTorpedoes
 	ships do: [:aShip | 
 		torpedoes do: [:aTorpedo |
@@ -320,28 +320,24 @@ collisionsShipsTorpedoes
 			self teleport: aShip]]
 	]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 2/16/2023 12:30:19'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 16/Feb/2023 12:30:19'!
 collisionsTorpedoesStar
 	torpedoes do: [:each | 
 		(each collides: centralStar) ifTrue: [
 			each flashWith: Color orange.
 			self destroyTorpedo: each]]! !
 
-!SpaceWar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:45:54'!
+!SpaceWar methodsFor: 'drawing' stamp: 'hlsf 1/Oct/2020 15:45:54'!
 drawOn: aCanvas
 	aCanvas
 		fillRectangle: self localBounds
 		color: color! !
 
-!SpaceWar methodsFor: 'event handling testing' stamp: 'hlsf 11/1/2020 10:03:57'!
-handlesKeyboard
-	^ true! !
-
-!SpaceWar methodsFor: 'event handling testing' stamp: 'hlsf 11/1/2020 10:04:18'!
+!SpaceWar methodsFor: 'event handling testing' stamp: 'hlsf 1/Nov/2020 10:04:18'!
 handlesMouseOver: event
 	^ true! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 2/22/2023 21:31:48'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 22/Feb/2023 21:31:48'!
 keyStroke: event
 	| key |
 	event isArrowUp ifTrue: [^ ships first push].
@@ -354,32 +350,32 @@ keyStroke: event
 	key = $a ifTrue: [^ ships second left].
 	key = $s ifTrue: [^ ships second fireTorpedo]! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/11/2020 10:07:17'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 4/Jun/2026 10:31:04'!
 mouseEnter: evt
 	evt hand newKeyboardFocus: self.	
 	self startStepping! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/11/2020 10:07:22'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 4/Jun/2026 10:31:09'!
 mouseLeave: evt
-	evt hand releaseKeyboardFocus: self.
+	evt hand releaseKeyboardFocusIf: self.
 	self stopStepping! !
 
-!SpaceWar methodsFor: 'focus handling' stamp: 'hlsf 9/10/2020 16:04:35'!
+!SpaceWar methodsFor: 'focus handling' stamp: 'hlsf 10/Sep/2020 16:04:35'!
 keyboardFocusChange: gotFocus
 	gotFocus 
 		ifTrue: [color _ self defaultColor ]
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
-!SpaceWar methodsFor: 'geometry testing' stamp: 'hlsf 12/11/2020 13:00:49'!
+!SpaceWar methodsFor: 'geometry testing' stamp: 'hlsf 11/Dec/2020 13:00:49'!
 clipsSubmorphs
 	^ true! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/Sep/2020 15:21:22'!
 defaultColor
 	^ `Color black`! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 11/1/2020 10:04:39'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 1/Nov/2020 10:04:39'!
 initialize
 "We want to capture keyboard and mouse events, 
 start the game loop(step) and initialize the actors." 
@@ -388,7 +384,7 @@ start the game loop(step) and initialize the actors."
 	self startSteppingStepTime: self stepTime.
 	self initializeActors.! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 8/23/2021 11:53:32'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 23/Aug/2021 11:53:32'!
 initializeActors
 	centralStar _ CentralStar new.
 	self addMorph: centralStar.
@@ -403,7 +399,7 @@ initializeActors
 		morphPosition: -200 @ 200;
 		color: Color red darker.! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 12/16/2020 19:45:30'!
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 16/Dec/2020 19:45:30'!
 stepAt: millisecondSinceLast
 	ships do: [:each | each update: millisecondSinceLast / 1000 ].
 	ships do: [:each | each unpush ].
@@ -412,29 +408,29 @@ stepAt: millisecondSinceLast
 	self redrawNeeded 
 ! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/11/2020 13:19:07'!
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 11/Sep/2020 13:19:07'!
 stepTime
 "millisecond"
 	^ 20! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:03:59'!
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/Sep/2020 18:03:59'!
 wantsSteps
 	^ true! !
 
-!SpaceWar methodsFor: 'geometry' stamp: 'hlsf 2/16/2023 11:38:27'!
+!SpaceWar methodsFor: 'geometry' stamp: 'hlsf 16/Feb/2023 11:38:27'!
 localBounds
 
 	^ -300 @ -300 extent: 600@600! !
 
-!CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 8/Oct/2020 22:20:17'!
 mass
 	^ 8000! !
 
-!CentralStar methodsFor: 'accessing' stamp: 'hlsf 12/15/2020 21:04:13'!
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 15/Dec/2020 21:04:13'!
 morphExtent
 	^ `30 @ 30`! !
 
-!CentralStar methodsFor: 'drawing' stamp: 'KenD 2/15/2023 15:40:04'!
+!CentralStar methodsFor: 'drawing' stamp: 'KenD 15/Feb/2023 15:40:04'!
 drawOn: canvas
 	| radius |
 	radius _ self morphExtent // 2.
@@ -444,7 +440,7 @@ drawOn: canvas
 		borderColor: Color orange 
 		fillColor: Color yellow ! !
 
-!CentralStar methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:55:55'!
+!CentralStar methodsFor: 'geometry' stamp: 'jmv 28/Oct/2021 14:55:55'!
 localBounds
 
 	^Rectangle center: 0@0 extent: self morphExtent! !

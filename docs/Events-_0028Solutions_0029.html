@@ -18,7 +18,7 @@ valuable.
 
 
 
-Compilation : June 3, 2026
+Compilation : June 4, 2026
 
 Documentation source: https://github.com/DrCuis/TheCuisBook 
 
@@ -85,8 +85,11 @@ Next: <a href="Code-Management-_0028Solutions_0029.html" accesskey="n" rel="next
 </div>
 <hr>
 <h3 class="unnumberedsec" id="Events-2"><span>Events<a class="copiable-link" href="#Events-2"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-event-mouse-1"></a>
 
 <h4 class="subheading" id="handleMouseOver-1"><span><a class="ref" href="Spacewar_0021-Events.html#handleMouseOver">Exercise 8.1</a><a class="copiable-link" href="#handleMouseOver-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-event-testing-_0023handleMouseOver_003a"></a>
+
 <p>The method <code class="code">handlesMouseOver:</code>, implemented in the
 <code class="code">SpaceWar</code> morph class, returns true so the game play is
 informed of mouse over events in dedicated methods.
@@ -113,21 +116,31 @@ play. Therefore we add the homonym method to the <code class="code">SpaceWar</co
 class:
 </p><div class="example smallexample">
 <pre class="example-preformatted">SpaceWar&gt;&gt;mouseLeave: event
-   event hand releaseKeyboardFocus: self.
+   event hand releaseKeyboardFocusIf: self.
    self stopStepping
 </pre></div>
 
 <h4 class="subheading" id="keyboardEvent-1"><span><a class="ref" href="Spacewar_0021-Events.html#keyboardEvent">Exercise 8.4</a><a class="copiable-link" href="#keyboardEvent-1"> &para;</a></span></h4>
-<p>The <code class="code">#handlesKeyboard</code> message is sent to a morph to know if it
-wants to receive keyboard event. The morph responds true to this
-message to state its interest on keyboard event. We implement the
-method in the <code class="code">SpaceWar</code> class:
+<a class="index-entry-id" id="index-event-keyboard-focus"></a>
+
+<p>The <code class="code">#handlesKeyboardFocus</code> message is sent to a morph to know if
+it wants to receive the keyboard focus. By default, the morph responds
+<code class="code">true</code> to this message to state its interest on keyboard
+event. Therefore, we don&rsquo;t need to implement it in the
+<code class="code">SpaceWar</code> class:
 </p><div class="example smallexample">
-<pre class="example-preformatted">SpaceWar&gt;&gt;handlesKeyboard
+<pre class="example-preformatted">Morph&gt;&gt;handlesKeyboardFocus
    ^ true
 </pre></div>
 
+<p>To be more precise, our game manually sets and unsets the keyboard
+focus when the mouse enters or leaves the game area. In this case,
+even returning <code class="code">false</code> to this message does not affect the
+behavior.
+</p>
 <h4 class="subheading" id="secondShipControl-1"><span><a class="ref" href="Spacewar_0021-Events.html#secondShipControl">Exercise 8.5</a><a class="copiable-link" href="#secondShipControl-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-event-keyboard-key-stroke"></a>
+
 <p>We designate the characters as <code class="code">$w $a $s $d</code>. We append the
 code below to the method <code class="code">SpaceWar&gt;&gt;keyStroke:</code>
 </p><div class="example smallexample">
