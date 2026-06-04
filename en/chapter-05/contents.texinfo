@@ -553,7 +553,7 @@ SpaceShip>>fireTorpedo
 
 
 Don't write this method yet, wait the next chapter and the
-redefinition of these visual objects as @class{Morph}.
+redefinition of these visual objects as @class{PlacedMorph}.
 
 @figure{Spacewar! torpedoes around,ch05-SpacewarGamePlay,8}
 

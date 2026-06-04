@@ -635,7 +635,7 @@ SpaceShip>>push
 "Init an accelaration boost"
    fuel isZero ifTrue: [^ self].
    fuel := fuel - 1.
-   acceleration := (acceleration + 10) min: 50
+   acceleration := acceleration + 10 min: 50
 @end smallexample
 
 @smallexample
