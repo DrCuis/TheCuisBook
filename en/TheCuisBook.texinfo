@@ -124,6 +124,7 @@ You are reading the Cuis Book!
 @c The Spacewar source code
 @node Spacewar! Source Code
 @appendix Spacewar! Source Code
+@anchor{spacewar-package}
 Download the @url{https://github.com/DrCuis/TheCuisBook/blob/master/code/Spacewar!.pck.st,SpaceWar! package}.
 @*
 In the raw source code below, understand the ``_'' character as ``@assign{}''.

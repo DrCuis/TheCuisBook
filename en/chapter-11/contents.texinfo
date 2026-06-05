@@ -38,7 +38,7 @@ Good writing takes practice. Good writers read.
 
 @menu
 * Golden Rules of the Smalltalk Guild ::
-* Refactoring to Improve Understanding::
+* Spacewar! Refactoring to Improve Understanding::
 @end menu
 
 @node Golden Rules of the Smalltalk Guild 
@@ -64,8 +64,8 @@ take another look at our code and see
 if we can make it easier for a reader to understand.
 
 
-@node Refactoring to Improve Understanding
-@section Refactoring to Improve Understanding
+@node Spacewar! Refactoring to Improve Understanding
+@section Spacewar! Refactoring to Improve Understanding
 @cindex refactoring
 Browsing through the code, I note a method named @msg{left}, which seems perhaps
 like an abbreviation.  I can ask for @emph{senders} to see how @msg{left} is used

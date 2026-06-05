@@ -20,6 +20,7 @@ how you should manage the code of an application written with @cuis{}.
 * The Package::
 * Daily Workflow::
 * Source Code File::
+* Spacewar! The Final Touch::
 @end menu
 
 @node The Image
@@ -56,6 +57,7 @@ solution to recover your lost editing, the @dfn{Change Log}.
 @node The Change Log
 @section The Change Log
 @cindex change log
+@cindex tools @subentry recover lost changes
 
 @cuis{} records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
@@ -148,7 +150,7 @@ From there you have three options:
 @node The Change Set
 @section The Change Set
 @cindex change set
-
+@cindex tools @subentry change sorter
 On a fresh @cuis{} installation, each code you edit in the System
 Browser is recorded in a @dfn{Change Set},
 
@@ -194,6 +196,8 @@ Object subclass: #TheBook
 !TheBook methodsFor: 'as yet unclassified' stamp: 'hlsf 11/18/2020 09:04:58'!
 pages
    @return{} 151! !}
+
+@cindex tools @subentry file list
 
 To load this change set back in a new image, you use the @dfn{File
 List} tool ...@clicksequence{World menu @click{} @label{Open} @click{}
@@ -242,6 +246,7 @@ manage the code: a package.
 @section The Package
 @cindex package
 @cindex class @subentry category
+@cindex tools @subentry package browser
 
 A package can hold a set of classes part of the same class category.
 
@@ -682,3 +687,56 @@ Browser also adds buttons to inspect the @label{code} and to treat code
 browser shows what code is different between the file and the running
 image and allows one to import individual classes or methods with the
 help of the context menu.
+
+@node Spacewar! The Final Touch
+@section Spacewar! The Final Touch
+
+At this position of the book, you have already written a fair amount
+of the code of the Spacewar! game. However, it is very likely there
+are missing peaces in your code or you may have inconsistency against
+the final source code of the game. Let's take this as an opportunity
+to introduce tools to compare the code installed in the @cuis{} image
+and the code from a file, as a plain @file{.st} fileout or a
+@file{.pck.st} package file.
+
+First, you need to get the complete package of the Spacewar! game
+found in the @ref{spacewar-package,appendix,appendix}; then, invoke the
+@cuis{} @dfn{File List} tool ...@clicksequence{World menu @click{}
+@label{Open} @click{} @label{File List}}, and search for the file
+package @file{Spacewar!.pck.st} you just downloaded.
+
+@figure{File List on Spacewar! package,ch10-FileListPackage,11}
+
+The @dfn{File List} tool has a @label{pck contents} button to examine
+its contents against the image code. Press this button, its opens in a new
+window the @dfn{Package contents} tool.
+
+On the top, it displays the type of content which are:
+
+@itemize
+
+  @item @label{do it}. Code snippet executed at the package installation, for example to create new class or method categories defined in the package.
+
+  @item @label{class definition}. Change in a class definition: attributes and parent class.
+
+  @item @label{class comment}.
+
+  @item @label{method}. Change in a method source code or new method.
+
+@end itemize
+
+@figure{Package contents, ch10-PackageContents,11}
+
+By default, the tool shows all the contents of the package, without
+considering the difference with code installed in the image. To only
+show the differences, adjust the tool from its contextual menu to
+remove unnecessary information: @label{Remove doIts} and @label{Remove
+up-to-date versions}. Once you have narrow the list of changes to what
+you need, @label{select all} then @label{file in selections} to
+install these changes in the image.
+
+@figure{A selection of changes to file in,ch10-PackageContentsSelection,10}
+
+You will get installed with the missing and changed parts of the
+game. To start it, select and execute @smalltalk{SpaceWar new
+openInWorld} in a @dfn{Workspace}.
