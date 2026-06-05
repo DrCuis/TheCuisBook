@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025, 2026 H. Fernandes with K. Dickey & J. Vuletich
+
+
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
+reviews of the book, suggestions and borrowed texts. Your help is very
+valuable.
+
+
+
+Compilation : June 6, 2026
+
+Documentation source: https://github.com/DrCuis/TheCuisBook 
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<title>A Clock Morph (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="A Clock Morph (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="A Clock Morph (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="The-Fundamentals-of-Morph.html" rel="up" title="The Fundamentals of Morph">
+<link href="Back-to-Spacewar_0021-Morphs.html" rel="next" title="Back to Spacewar! Morphs">
+<link href="Going-Vector.html" rel="prev" title="Going Vector">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+blockquote.indentedblock {margin-right: 0em}
+div.center {text-align:center}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="fr">
+<div class="section-level-extent" id="A-Clock-Morph">
+<div class="nav-panel">
+<p>
+Next: <a href="Back-to-Spacewar_0021-Morphs.html" accesskey="n" rel="next">Back to Spacewar! Morphs</a>, Previous: <a href="Going-Vector.html" accesskey="p" rel="prev">Going Vector</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="A-Clock-Morph-1"><span>7.2 A Clock Morph<a class="copiable-link" href="#A-Clock-Morph-1"> &para;</a></span></h3>
+<p>With all the things we have already learned, we can build a more
+sophisticated morph. Let&rsquo;s build a <code class="code">ClockMorph</code> as see in
+<a class="ref" href="#ch07_002d05_002dClock">Figure 7.5</a>.
+</p>
+
+<div class="float" id="ch07_002d05_002dClock">
+<div class="center"><img class="image" src="ch07-05-Clock.png" alt="ch07-05-Clock">
+</div><div class="caption"><p><strong class="strong">Figure 7.5: </strong>A clock morph</p></div></div>
+<p>Let&rsquo;s create <code class="code">ClockMorph</code>, the dial clock :
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #ClockMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
+</pre></div>
+
+<a class="index-entry-id" id="index-morph-drawOn_003a-2"></a>
+<p>...and its drawing method in the category <code class="command">drawing</code>:
+</p>
+<div class="float" id="clockDialDrawing">
+<div class="example smallexample">
+<pre class="example-preformatted">ClockMorph&gt;&gt;drawOn: aCanvas
+   aCanvas
+      ellipseCenter: 0@0
+      radius: 100
+      borderWidth: 10
+      borderColor: Color lightCyan
+      fillColor: Color veryVeryLightGray.
+   aCanvas drawString: 'XII' at: -13 @ -90 font: nil color: Color brown.
+   aCanvas drawString: 'III' at: 66 @ -10 font: nil color: Color brown.
+   aCanvas drawString: 'VI' at: -11 @ 70 font: nil color: Color brown.
+   aCanvas drawString: 'IX' at: -90 @ -10 font: nil color: Color brown
+</pre></div>
+<div class="caption"><p><strong class="strong">Example 7.2: </strong>Drawing the clock dial</p></div></div>
+
+<p>We create <code class="code">ClockHourHandMorph</code>, the hand for the hours:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #ClockHourHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
+</pre></div>
+
+<p>...and its drawing method in the category <code class="command">drawing</code>:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">ClockHourHandMorph&gt;&gt;drawOn: aCanvas
+   aCanvas fillColor: (Color black alpha: 0.6) do: [
+      aCanvas
+         moveTo: 0 @ 10;
+         lineTo: -5 @ 0;
+         lineTo: 0 @ -50;
+         lineTo: 5 @ 0;
+         lineTo: 0 @ 10 ].
+</pre></div>
+
+<p>You can start playing with them. We could use several instances of a
+single <code class="code">ClockHandMorph</code>, or create several classes. Here we
+chose to do the latter. Note that all the <code class="code">drawOn:</code> methods use
+hardcoded constants for all coordinates. As we have seen before, this
+is not a limitation. We don&rsquo;t need to write a lot of specialized trigonometric and
+scaling formulas to build Morphs in Cuis-Smalltalk!
+</p>
+<p>By now, you might imagine what we are doing with all this, but please
+bear with us while we finish building our clock.
+</p>
+<p>We create <code class="code">ClockMinuteHandMorph</code>, the hand for the minutes:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #ClockMinuteHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
+</pre></div>
+
+<p>...and its drawing method in the category <code class="command">drawing</code>:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">ClockMinuteHandMorph&gt;&gt;drawOn: aCanvas
+   aCanvas fillColor: ((Color black) alpha: 0.6) do: [
+      aCanvas
+         moveTo: 0 @ 8;
+         lineTo: -4 @ 0;
+         lineTo: 0 @ -82;
+         lineTo: 4 @ 0;
+         lineTo: 0 @ 8 ]
+</pre></div>
+
+<p>And finally, the <code class="code">ClockSecondHandMorph</code>, the hand for the seconds:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #ClockSecondHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
+</pre></div>
+
+<p>...and its drawing method in the category <code class="command">drawing</code>:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
+   aCanvas strokeWidth: 2.5 color: Color red do: [
+      aCanvas
+         moveTo: 0 @ 0;
+         lineTo: 0 @ -85 ]
+</pre></div>
+
+<p>Now, all that is needed is to put our clock parts together in
+<code class="code">ClockMorph</code>. In its method category <code class="command">initialization</code> add
+its <code class="code">initialize</code> method (accept the new names as instance
+variables):
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">ClockMorph&gt;&gt;initialize
+   super initialize.
+   self addMorph: (hourHand := ClockHourHandMorph new).
+   self addMorph: (minuteHand := ClockMinuteHandMorph new).
+   self addMorph: (secondHand := ClockSecondHandMorph new)
+</pre></div>
+
+<blockquote class="indentedblock">
+<p>&nbsp;<img class="image" src="note.png" alt="note">
+If you have not already added instance variables for the
+clock hands, the Cuis IDE will note this and ask what you want
+to do about it.  We want to declare the three missing names as instance
+variables.
+</p></blockquote>
+
+<div class="float" id="ch07_002d07_002dClockMorph_002dinitialize">
+<div class="center"><img class="image" src="ch07-07-ClockMorph-initialize.png" alt="ch07-07-ClockMorph-initialize">
+</div><div class="caption"><p><strong class="strong">Figure 7.6: </strong>Declaring unknown variables as instance variables in current class</p></div></div>
+<p>Your <code class="code">ClockMorph</code> class definition should now be complete!
+</p>
+<div class="float" id="ch07_002d08_002dClockMorph_002divars_002dadded">
+<div class="center"><img class="image" src="ch07-08-ClockMorph-ivars-added.png" alt="ch07-08-ClockMorph-ivars-added">
+</div><div class="caption"><p><strong class="strong">Figure 7.7: </strong><code class="code">ClockMorph</code> with instance variables added</p></div></div>
+<p>Finally, we animate our clock. In method category <code class="command">stepping</code> add the
+method:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">ClockMorph&gt;&gt;wantsSteps
+   ^ true
+</pre></div>
+
+<p>...and:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">ClockMorph&gt;&gt;step
+   | time |
+   time := Time now.
+   hourHand rotationDegrees: time hour * 30.
+   minuteHand rotationDegrees: time minute * 6.
+   secondHand rotationDegrees: time second * 6
+</pre></div>
+
+<p>Take a look at how we update the clock hands.
+</p>
+<p>As we said before, any <code class="code">PlacedMorph</code> defines a coordinate
+system for its own <code class="code">drawOn:</code> method and also for its
+submorphs. This new coordinate system might include rotation or
+reflexion of the axis, and scaling of sizes, but by default they
+don&rsquo;t. This means that they just translate the origin, by specifying
+where in the owner point <code class="code">0 @ 0</code> is to be located.
+</p>
+<p>The World coordinate system has <code class="code">0 @ 0</code> at the top left
+corner, with X coordinates increasing to the right, and Y coordinates
+increasing downwards. Positive rotations go clockwise. This is the
+usual convention in graphics frameworks. Note that this is different
+from the usual mathematics convention, where Y increases upwards, and
+positive angles go counterclockwise.
+</p>
+<p>So, how do we update the hands? For example, for the hour hand, one
+hour means 30 degrees, as 12 hours means 360 degrees or a whole
+turn. So, we multiply hours by 30 to get degrees. Minute and second hand
+work in a similar way, but as there are 60 minutes in one hour, and 60
+seconds in one minute, we need to multiply them by 6 to get degrees. As
+rotation is done around the origin, and the clock has set the origin at its
+center (<a class="ref" href="#clockDialDrawing">Example 7.2</a>), there&rsquo;s no need to set the position of the
+hands. Their <code class="code">0 @ 0</code> origin will therefore be at the clock
+<code class="code">0 @ 0</code>, i.e. the center of the clock.
+</p>
+<div class="float" id="ch07_002d06_002dExerciseClock">
+<div class="center"><img class="image" src="ch07-06-ExerciseClock.png" alt="ch07-06-ExerciseClock">
+</div><div class="caption"><p><strong class="strong">Figure 7.8: </strong>A fancy clock morph</p></div></div>
+<div class="float" id="exeFancyClock">
+<blockquote class="indentedblock">
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Look at the clock on
+<a class="ref" href="#ch07_002d06_002dExerciseClock">Figure 7.8</a>. Don&rsquo;t you think its hand for the seconds
+decorated with a red and yellow disc is fancy? How will you modify our
+clock morph to get this result?</em>
+</p></blockquote>
+<div class="caption"><p><strong class="strong">Exercise 7.3: </strong>A fancy clock</p></div></div>
+<p>Create some instances of your clock: <code class="code">ClockMorph new
+openInWorld</code>. You can rotate and zoom. Look at the visual quality of
+the Roman numerals in the clock face, especially when rotated and
+zoomed. You don&rsquo;t get this graphics quality on your regular
+programming environment! You can also extract the parts, or scale each
+separately. Another fun experiment is to extract the Roman numerals
+into a separate <code class="code">ClockFaceMorph</code>, and make it submorph of the
+Clock. Then, you can rotate just the face, not the clock, and the
+clock will show fake time. Try it!
+</p>
+<p>You might have noted two things that seem missing, though: How to
+compute bounding rectangles for Morphs, and how to detect if a Morph
+is being hit by the Hand, so you can move it or get a halo. The
+display rectangle that fully contains a morph is required by the framework
+to manage the required refresh of Display areas as a result of
+any change. But you don&rsquo;t need to know this rectangle in order to
+build your own Morphs. In Cuis-Smalltalk, the framework computes it as
+needed, and stores it in the <code class="code">privateDisplayBounds</code>
+variable. You don&rsquo;t need to worry about that variable at
+all.
+</p>
+<p>With respect to detecting if a Morph is being touched by the Hand,
+or more generally, if some pixel belongs to a Morph, truth is that during
+the drawing operation of a Morph, the framework indeed knows all the
+pixels it is affecting. The <code class="code">drawOn:</code> method completely specifies
+the shape of the Morph. Therefore, there is no need to ask the programmer
+to code the Morph geometry again in a separate method! All that is needed
+is careful design of the framework itself, to avoid requiring programmers to
+handle this extra complexity.
+</p>
+<p>The ideas we have outlined in this chapter are the fundamental ones in
+Morphic, and the framework is implemented in order to support
+them. Morphs (i.e. interactive graphic objects) are very general and
+flexible. They are not restricted to a conventional widget library,
+although such a library (rooted in <code class="code">BoxedMorph</code>) is included
+and used for building all the Smalltalk tools.
+</p>
+<p>The examples we have explored use the <code class="command">VectorGraphics</code>
+framework. It includes <code class="code">VectorCanvas</code> and <code class="code">HybridCanvas</code>
+classes. Cuis-Smalltalk also includes the legacy <code class="code">BitBltCanvas</code> class
+inherited from Squeak. <code class="code">BitBltCanvas</code> doesn&rsquo;t support the vector
+graphics drawing operations and doesn&rsquo;t do anti-aliasing or
+zooming. But it is mature, and it relies on the BitBlt operation that
+is included in the <abbr class="acronym">VM</abbr>. This means that it offers excellent
+performance.
+</p>
+<p>To further explore Cuis-Smalltalk&rsquo; Morphic, evaluate <code class="code">Feature
+require: 'SVG'</code>, and then <code class="code">SVGMainMorph exampleLion
+openInWorld</code> and the other examples there. Also, be sure to try the
+examples in the class category <code class="command">Morphic-Examples</code>, among them
+execute <code class="code">Sample10PythagorasTree new openInWorld</code> and play
+with the mouse wheel&rsquo;s up and down, left and right directions.
+</p>
+<p>Before we leave this section, here is a two lines change to turn our
+Cuis quartz clock<a class="footnote" id="DOCF24" href="#FOOT24"><sup>24</sup></a> to an automatic Swiss clock<a class="footnote" id="DOCF25" href="#FOOT25"><sup>25</sup></a><a class="footnote" id="DOCF26" href="#FOOT26"><sup>26</sup></a>:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">ClockMorph&gt;&gt;stepTime
+    ^ 100 &quot;milliseconds&quot;
+ClockMorph&gt;&gt;step
+../..
+   secondHand rotationDegrees: (time second + (time nanoSecond * 1.0e-9))* 6
+</pre></div>
+
+<p>Try to understand how these changes affect the behavior of the
+seconds&rsquo; hand and at which fraction of a second it is rotating.
+</p>
+</div>
+<div class="footnotes-segment">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT24" href="#DOCF24">(24)</a></h5>
+<p>In a quartz clock, the hand for the seconds
+moves every second.</p>
+<h5 class="footnote-body-heading"><a id="FOOT25" href="#DOCF25">(25)</a></h5>
+<p>In an
+automatic clock, the hand for the seconds moves every fraction of a
+second. The smaller the fraction, the more premium the clock
+is.</p>
+<h5 class="footnote-body-heading"><a id="FOOT26" href="#DOCF26">(26)</a></h5>
+<p>A Japanese automatic clock will be just fine too.</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Back-to-Spacewar_0021-Morphs.html">Back to Spacewar! Morphs</a>, Previous: <a href="Going-Vector.html">Going Vector</a>, Up: <a href="The-Fundamentals-of-Morph.html">The Fundamentals of Morph</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

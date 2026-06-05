@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025, 2026 H. Fernandes with K. Dickey & J. Vuletich
+
+
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
+reviews of the book, suggestions and borrowed texts. Your help is very
+valuable.
+
+
+
+Compilation : June 6, 2026
+
+Documentation source: https://github.com/DrCuis/TheCuisBook 
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<title>Source Code File (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Source Code File (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Source Code File (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Code-Management.html" rel="up" title="Code Management">
+<link href="Spacewar_0021-The-Final-Touch.html" rel="next" title="Spacewar! The Final Touch">
+<link href="Daily-Workflow.html" rel="prev" title="Daily Workflow">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="fr">
+<div class="section-level-extent" id="Source-Code-File">
+<div class="nav-panel">
+<p>
+Next: <a href="Spacewar_0021-The-Final-Touch.html" accesskey="n" rel="next">Spacewar! The Final Touch</a>, Previous: <a href="Daily-Workflow.html" accesskey="p" rel="prev">Daily Workflow</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Source-Code-File-1"><span>9.6 Source Code File<a class="copiable-link" href="#Source-Code-File-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-_002est"></a>
+<a class="index-entry-id" id="index-_002epck_002est"></a>
+<a class="index-entry-id" id="index-file-extension-_002est"></a>
+<a class="index-entry-id" id="index-file-extension-_002est_002epck"></a>
+
+<p>In this chapter, you encountered files produced by the Cuis-Smalltalk
+management tools. Some come with the extension <samp class="file">.pck.st</samp> and
+others with the extension <samp class="file">.st</samp>. They both contain Smalltalk code
+but serve different purposes.
+</p>
+<p>Files with extension <samp class="file">.pck.st</samp> are Cuis-Smalltalk package files. They
+have a preamble with package information, like feature provided,
+version information, a description for the package and the package
+requirements.
+</p>
+<p>Smalltalk code files can be installed by selecting them in the File
+List Browser and clicking on <code class="command">install</code> button.
+</p>
+<p>When a package is installed, its dependencies are also installed and
+the loaded packaged appears in the Package List tool. Package files
+<samp class="file">.pck.st</samp> are created using the Packages List tool in
+Cuis-Smalltalk.
+</p>
+<p>Files with extension <samp class="file">.st</samp> contained serialized Smalltalk code &ndash;
+classes and methods. They are created when you <em class="dfn">file out</em> a
+Smalltalk system category, class or method. You can serialize code in
+the System Browser by selecting a <strong class="strong">system
+category</strong>, <strong class="strong">class</strong> or <strong class="strong">method</strong> &rarr; right click and
+select <code class="command">fileOut</code> from the context menu.
+</p>
+<p>Unlike <samp class="file">.pck.st</samp> files, <samp class="file">.st</samp> files don&rsquo;t contain any
+dependencies, description, or package information, only serialized
+Smalltalk code. <samp class="file">.st</samp> files are around since Smalltalk’s early
+days, while <samp class="file">.pkg.st</samp> were added with the Cuis-Smalltalk package
+functionality.
+</p>
+<p>In addition to <code class="command">install</code>, selecting a code file in the File List
+Browser also adds buttons to inspect the <code class="command">code</code> and to treat code
+<code class="command">contents</code> like a Change Sorter. When inspecting the code, a
+browser shows what code is different between the file and the running
+image and allows one to import individual classes or methods with the
+help of the context menu.
+</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Spacewar_0021-The-Final-Touch.html">Spacewar! The Final Touch</a>, Previous: <a href="Daily-Workflow.html">Daily Workflow</a>, Up: <a href="Code-Management.html">Code Management</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

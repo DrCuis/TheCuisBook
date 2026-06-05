@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025, 2026 H. Fernandes with K. Dickey & J. Vuletich
+
+
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
+reviews of the book, suggestions and borrowed texts. Your help is very
+valuable.
+
+
+
+Compilation : June 6, 2026
+
+Documentation source: https://github.com/DrCuis/TheCuisBook 
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<title>System Events (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="System Events (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="System Events (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Events.html" rel="up" title="Events">
+<link href="Overall-Mechanism.html" rel="next" title="Overall Mechanism">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+pre.format-preformatted {font-family: inherit}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="fr">
+<div class="section-level-extent" id="System-Events">
+<div class="nav-panel">
+<p>
+Next: <a href="Overall-Mechanism.html" accesskey="n" rel="next">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="System-Events-1"><span>8.1 System Events<a class="copiable-link" href="#System-Events-1"> &para;</a></span></h3>
+
+<p>Modern integrated <em class="dfn">System On a Chip</em> (<em class="dfn">SOC</em>) hardware has many
+circuits which are active at the same time.  So one kind of event is
+sensing something happening in the world.  Class <code class="code">EventSensor</code>
+handles keyboard key press and mouse <em class="dfn">hardware interrupts</em>,
+translating between hardware signals and software event objects.
+</p>
+<p>Basically, a morph <em class="emph">raises its hand</em> and says what events, if
+any, it is interested in receiving. Then it implements methods to get
+the event objects holding the information of the captured events. In
+Cuis-Smalltalk, the class <code class="code">MorphicEvent</code> and its subclasses represent
+the diversity of events in the system.
+</p>
+<a class="index-entry-id" id="index-event-classes"></a>
+<div class="format">
+<pre class="format-preformatted"><code class="code">MorphicEvent</code>
+   <code class="code">DropEvent</code>
+   <code class="code">DropFilesEvent</code>
+   <code class="code">UserInputEvent</code>
+      <code class="code">KeyboardEvent</code>
+      <code class="code">MouseEvent</code>
+         <code class="code">MouseButtonEvent</code>
+         <code class="code">MouseMoveEvent</code>
+         <code class="code">MouseScrollEvent</code>
+      <code class="code">WindowEvent</code>
+</pre></div>
+
+
+<p>As <code class="code">MouseMoveEvent</code>s are generated, the <code class="code">HandMorph</code>
+adjusts its screen position.  When mouse and keystroke events arrive,
+the <code class="code">HandMorph</code> coordinates the &ldquo;dispatch&rdquo; of events to the
+proper morph under the hand as well as displaying tool tips and
+carrying morphs in transit during drag operations.
+</p>
+<p>As we saw in the previous chapter with <code class="code">ColorClickEllipse</code>, any
+morph may override default <code class="code">Morph</code> methods to assert that it
+handles various user events and the methods which take the associated
+event objects when events arrive.
+</p>
+<p>Basically, user input events are generated, a <code class="code">HandMorph</code>
+reflects any cursor movement, morphs react to events, each long
+running task gets a time slice and makes some progress, any display
+changes are updated on the screen, and the next step happens.  Time
+marches forward a step.
+</p>
+<p>This happens over and over and over, keeping the juggler&rsquo;s illusion
+that all balls in the air are moving at once.  Underneath, the balls
+are each moving just a bit, in sequence.
+</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Overall-Mechanism.html">Overall Mechanism</a>, Up: <a href="Events.html">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

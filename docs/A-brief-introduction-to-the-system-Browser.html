@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025, 2026 H. Fernandes with K. Dickey & J. Vuletich
+
+
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
+reviews of the book, suggestions and borrowed texts. Your help is very
+valuable.
+
+
+
+Compilation : June 6, 2026
+
+Documentation source: https://github.com/DrCuis/TheCuisBook 
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<title>A brief introduction to the system Browser (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="A brief introduction to the system Browser (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="A brief introduction to the system Browser (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
+<link href="Spacewar_0021-models.html" rel="next" title="Spacewar! models">
+<link href="Messages-to-number-entities.html" rel="prev" title="Messages to number entities">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+blockquote.indentedblock {margin-right: 0em}
+div.center {text-align:center}
+div.example {margin-left: 3.2em}
+kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="fr">
+<div class="section-level-extent" id="A-brief-introduction-to-the-system-Browser">
+<div class="nav-panel">
+<p>
+Next: <a href="Spacewar_0021-models.html" accesskey="n" rel="next">Spacewar! models</a>, Previous: <a href="Messages-to-number-entities.html" accesskey="p" rel="prev">Messages to number entities</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="A-brief-introduction-to-the-system-Browser-1"><span>2.5 A brief introduction to the system Browser<a class="copiable-link" href="#A-brief-introduction-to-the-system-Browser-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-tools-system-browser"></a>
+<a class="index-entry-id" id="index-browser"></a>
+
+<p>Smalltalk organizes instance behaviors using classes.  
+A class is an object that holds a set of methods to be executed
+when one of its instances receives a message
+that is the name of one of these methods.
+</p>
+<p>The <em class="dfn">System Browser</em>, in short, the <em class="dfn">Browser</em>, is a tool to
+rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
+classes (system or user ones) and to write new classes and methods.
+</p>
+<p>To access the tool ...World menu &rarr;
+<code class="command">Open...</code> &rarr; <code class="command">Browser</code>...
+</p>
+<div class="float" id="ch02_002dbrowserDetailed">
+<div class="center"><img class="image" src="ch02-browserDetailed.png" alt="ch02-browserDetailed">
+</div><div class="caption"><p><strong class="strong">Figure 2.1: </strong>The System Browser</p></div></div>
+<a class="index-entry-id" id="index-browser-class-category"></a>
+<a class="index-entry-id" id="index-class-category"></a>
+<p>At the top left are the <em class="dfn">class categories</em>, groups of classes
+sharing the same theme. A category can also be used to create a
+<em class="dfn">Package</em>, which is an organisational element to save code in a
+file system.  In <a class="ref" href="#ch02_002dbrowserDetailed">Figure 2.1</a>, the selected class
+category is <strong class="strong">Kernel-Numbers</strong>, a group of classes we already
+started using. The term <strong class="strong">Kernel-</strong> indicates it is part of
+fundamental categories, but it is only a convention. See the other
+categories such as <strong class="strong">Kernel-Text</strong> and <strong class="strong">Kernel-Chronology</strong>
+related to text and date entities.
+</p>
+<a class="index-entry-id" id="index-class-declaration"></a>
+<p>Next to the right are the classes in the selected class category. They
+are nicely presented in a parent-child class hierarchy. When a class is
+first selected in this pane, its declaration appears in the large pane
+below, the <code class="code">Number</code> class declaration is:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">Magnitude subclass: #Number
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Kernel-Numbers'
+</pre></div>
+
+<p>A few important points in this declaration:
+</p>
+<ul class="itemize mark-bullet">
+<li><em class="emph"><code class="code">Number</code></em> is a subclass of <em class="emph"><code class="code">Magnitude</code></em>.
+   This means
+   <code class="code">Number</code> is a kind of specialized <code class="code">Magnitude</code>.
+
+</li><li>the declaration itself is Smalltalk code, indeed the message
+   <code class="code">#subclass:instanceVariableNames:classVariableNames:...</code>
+   was sent to <code class="code">Magnitude</code> to create this class.
+
+</li><li>the <code class="code">subclass:</code> argument <code class="code">Number</code> is prefixed
+   with &ldquo;#&rdquo;. It is a symbol, a kind of unique string. Indeed when
+   declaring the <code class="code">Number</code> class, the system does not know about it
+   yet, so it is named as a symbol.
+
+</li><li>The <code class="code">instanceVariableNames:</code> argument is a string:
+   the instance variables of the class are declared by names separated
+   by a space. There are none in this class definition.
+
+</li></ul>
+
+<p>A subclass inherits behaviors from its parent superclass, and so only needs
+to describe what is different from its superclass.  An instance
+of <code class="code">Number</code> adds methods (which define behaviors) unknown to an instance
+of <code class="code">Magnitude</code>.  We will explore this in detail as we go forward.
+</p>
+<a class="index-entry-id" id="index-class-comment"></a>
+<p>To learn about the purpose of a class, it is good practice to <strong class="strong">always</strong>
+visit the class comment. Often a comment also comes with code
+examples to learn how to use the object; these code snippets can be
+selected and executed in place as done from a Workspace. In
+<a class="ref" href="#ch02_002dbrowserDetailed">Figure 2.1</a>, see the <code class="command">comment</code> button to read or
+to edit the comment of the selected class.
+</p>
+<a class="index-entry-id" id="index-method-category"></a>
+<p>To the right of the class panel is the method categories panel.
+A class may have many methods, so grouping
+them by category helps other users orient themselves in finding related methods.
+As a reference, <code class="code">Number</code>
+has more than 100 instance side methods implemented in
+itself<a class="footnote" id="DOCF14" href="#FOOT14"><sup>14</sup></a>. Clicking the <code class="command">arithmetic</code> category
+directly gives access to related methods in the next and last pane at
+the right.
+</p>
+<a class="index-entry-id" id="index-class-category-1"></a>
+<a class="index-entry-id" id="index-keyboard-shortcut-find-a-class-_0028Ctrl_002df_0029"></a>
+
+<blockquote class="indentedblock">
+<p>&nbsp;<img class="image" src="note.png" alt="note">
+A right click on the Class Category pane
+brings up its context menu.  You can select <code class="command">find class ..</code> or,
+as the menu indicates, use <kbd class="kbd">Ctrl-f</kbd> (<em class="emph"><b class="b">F</b>ind</em>), to get a
+fill-in panel and type part of a class name to match.  Try it with
+<code class="code">String</code>.
+</p></blockquote>
+
+<div class="float" id="stringArith">
+<blockquote class="indentedblock">
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">How many methods are there
+in the <strong class="strong">arithmetic</strong> method category of the <code class="code">CharacterSequence</code>
+class?</em>
+</p></blockquote>
+<div class="caption"><p><strong class="strong">Exercise 2.3: </strong>Count of methods</p></div></div>
+
+<a class="index-entry-id" id="index-method-instance-method"></a>
+<p>In the Browser, once a method is selected &ndash; as in
+<a class="ref" href="#ch02_002dbrowserDetailed">Figure 2.1</a>, <code class="code">abs</code> method &ndash; the bottom part
+shows its source code, ready to be explored or edited. Often,
+you will find a small comment just after the method name,
+surrounded by double quotes.
+</p>
+<p>Every object knows its own class and will respond with it when sent the message <code class="code">#class</code>.
+</p>
+<a class="index-entry-id" id="index-browser-invoke-from-Workspace"></a>
+<a class="index-entry-id" id="index-keyboard-shortcut-browse-a-class-_0028Ctrl_002db_0029"></a>
+<p><strong class="strong">Tip.</strong> In the workspace <kbd class="kbd">Ctrl-b</kbd> (<em class="emph"><b class="b">B</b>rowse</em>)
+on the class name will open a Browser on the named class:
+</p>
+<ul class="itemize mark-bullet">
+<li>In the Workspace, type <code class="code">2 class</code> and print
+   with <kbd class="kbd">Ctrl-p</kbd>,
+
+</li><li><code class="code">SmallInteger</code> is printed and automatically highlighted as the current selection,
+
+</li><li>Invoke the Browser on the selected <code class="code">SmallInteger</code>
+   class with <kbd class="kbd">Ctrl-b</kbd>,
+
+</li><li>A new Browser instance opens on the <code class="code">SmallInteger</code>, ready to
+   be explored.
+
+</li></ul>
+
+</div>
+<div class="footnotes-segment">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT14" href="#DOCF14">(14)</a></h5>
+<p>When considering its parents, the combined method count is
+more than 300.</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Spacewar_0021-models.html">Spacewar! models</a>, Previous: <a href="Messages-to-number-entities.html">Messages to number entities</a>, Up: <a href="The-Message-Way-of-Life.html">The Message Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

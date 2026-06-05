@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025, 2026 H. Fernandes with K. Dickey & J. Vuletich
+
+
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
+reviews of the book, suggestions and borrowed texts. Your help is very
+valuable.
+
+
+
+Compilation : June 6, 2026
+
+Documentation source: https://github.com/DrCuis/TheCuisBook 
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<title>Spacewar! (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Spacewar! (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Spacewar! (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Beginnings.html" rel="up" title="Beginnings">
+<link href="Writing-your-first-scripts.html" rel="prev" title="Writing your first scripts">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.center {text-align:center}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="fr">
+<div class="section-level-extent" id="Spacewar_0021">
+<div class="nav-panel">
+<p>
+Previous: <a href="Writing-your-first-scripts.html" accesskey="p" rel="prev">Writing your first scripts</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Spacewar_0021-1"><span>1.4 Spacewar!<a class="copiable-link" href="#Spacewar_0021-1"> &para;</a></span></h3>
+<p>The Spacewar! game was initially developed in 1962 by Steve Russell on
+a DEC PDP-1 minicomputer. It is said to be the first known video game
+installed on several computers and it was very popular in the
+programming community in the 1960s. It was ported and rewritten
+several times to different hardware architectures and complemented with
+additional features. <em class="emph">Computer Space</em>, the first arcade video
+game cabinet was a clone of Spacewar!
+</p>
+<div class="float" id="ch01_002dSpacewarPDP">
+<div class="center"><img class="image" src="ch01-SpacewarPDP.png" alt="ch01-SpacewarPDP">
+</div><div class="caption"><p><strong class="strong">Figure 1.4: </strong>Spacewar! game on a DEC PDP-1 minicomputer</p></div></div>
+<p>Wikipedia describes very precisely this space combat simulation game:
+</p>
+<blockquote class="quotation">
+<p>The gameplay of Spacewar! involves two monochrome spaceships called
+&quot;the needle&quot; and &quot;the wedge&quot;, each controlled by a player, attempting
+to shoot one another while maneuvering on a two-dimensional plane in
+the gravity well of a star, set against the backdrop of a
+starfield. The ships fire torpedoes, which are not affected by
+the gravitational pull of the star. The ships have a limited number of
+torpedoes and supply of fuel, which is used when the player fires the
+ship&rsquo;s thrusters. Torpedoes are fired one at a time by flipping a
+toggle switch on the computer or pressing a button on the control pad,
+and there is a cooldown period between launches. The ships remain in
+motion even when the player is not accelerating, and rotating the
+ships does not change the direction of their motion, though the ships
+can rotate at a constant rate without inertia.
+</p>
+<p>Each player controls one of the ships and must attempt to shoot down
+the other ship while avoiding a collision with the star or the
+opposing ship. Flying near the star can provide a gravity assist to
+the player at the risk of misjudging the trajectory and falling into
+the star. If a ship moves past one edge of the screen, it reappears on
+the other side in a wraparound effect.
+</p></blockquote>
+<div class="center">&mdash; <em class="emph">Wikipedia, <a class="url" href="https://en.wikipedia.org/wiki/Spacewar!#Gameplay">Spacewar!</a></em>
+</div>
+<p>Therefore, the protagonists of the game are:
+</p>
+<ol class="enumerate">
+<li> a <strong class="strong">central star</strong> generating a gravity field,
+
+</li><li> a <strong class="strong">star field</strong> background,
+
+</li><li> two <strong class="strong">space ships</strong> called <em class="emph">the needle</em> and <em class="emph">the
+ wedge</em> controlled by two players.
+
+</li><li> <strong class="strong">torpedoes</strong> fired by the space ships.
+
+</li></ol>
+
+<div class="float" id="ch01_002dSpacewarGameplay">
+<div class="center"><img class="image" src="ch01-SpacewarGameplay.png" alt="ch01-SpacewarGameplay">
+</div><div class="caption"><p><strong class="strong">Figure 1.5: </strong>Spacewar! game play</p></div></div>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="Writing-your-first-scripts.html">Writing your first scripts</a>, Up: <a href="Beginnings.html">Beginnings</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025, 2026 H. Fernandes with K. Dickey & J. Vuletich
+
+
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
+reviews of the book, suggestions and borrowed texts. Your help is very
+valuable.
+
+
+
+Compilation : June 6, 2026
+
+Documentation source: https://github.com/DrCuis/TheCuisBook 
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<title>Pseudo-variables (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Pseudo-variables (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Pseudo-variables (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Control-Flow-Messaging.html" rel="up" title="Control Flow Messaging">
+<link href="Method-syntax.html" rel="next" title="Method syntax">
+<link href="Syntactic-elements.html" rel="prev" title="Syntactic elements">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+blockquote.indentedblock {margin-right: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="fr">
+<div class="section-level-extent" id="Pseudo_002dvariables">
+<div class="nav-panel">
+<p>
+Next: <a href="Method-syntax.html" accesskey="n" rel="next">Method syntax</a>, Previous: <a href="Syntactic-elements.html" accesskey="p" rel="prev">Syntactic elements</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Pseudo_002dvariables-1"><span>5.2 Pseudo-variables<a class="copiable-link" href="#Pseudo_002dvariables-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-pseudo_002dvariables"></a>
+
+<p>In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
+</p>
+<blockquote class="indentedblock">
+<p><code class="code">nil</code>, <code class="code">true</code>, <code class="code">false</code>,
+<code class="code">self</code>, <code class="code">super</code>, and <code class="code">thisContext</code>.
+</p></blockquote>
+
+<p>They are called <em class="dfn">pseudo-variables</em> because they are predefined and
+cannot be assigned to. <code class="code">true</code>, <code class="code">false</code>, and
+<code class="code">nil</code> are constants while the values of <code class="code">self</code>,
+<code class="code">super</code>, and <code class="code">thisContext</code> vary dynamically as
+code is executed.
+</p>
+<ul class="itemize mark-bullet">
+<li>
+<a class="index-entry-id" id="index-pseudo_002dvariable-true"></a>
+<a class="index-entry-id" id="index-pseudo_002dvariable-false"></a>
+<a class="index-entry-id" id="index-true"></a>
+<a class="index-entry-id" id="index-false"></a>
+</li><li><code class="code">true</code> and <code class="code">false</code> are the unique
+   instances of the <code class="code">Boolean</code> classes <code class="code">True</code> and
+   <code class="code">False</code>.
+
+<a class="index-entry-id" id="index-pseudo_002dvariable-self"></a>
+<a class="index-entry-id" id="index-self"></a>
+<a class="index-entry-id" id="index-self-1"></a>
+</li><li><code class="code">self</code> always refers to the receiver of the
+   currently executing method.
+
+<a class="index-entry-id" id="index-pseudo_002dvariable-super"></a>
+<a class="index-entry-id" id="index-super-1"></a>
+</li><li><code class="code">super</code> also refers to the receiver of the current
+   method, but when you send a message to <code class="code">super</code>, the
+   method-lookup changes so that it starts from the superclass of the
+   class containing the method that uses <code class="code">super</code>.
+   
+<a class="index-entry-id" id="index-pseudo_002dvariable-nil"></a>
+<a class="index-entry-id" id="index-nil"></a>
+</li><li><code class="code">nil</code> is the undefined object. It is the unique
+   instance of the class <code class="code">UndefinedObject</code>. Instance
+   variables, class variables and local variables are initialized to
+   <code class="code">nil</code>.
+
+
+<a class="index-entry-id" id="index-pseudo_002dvariable-thisContext"></a>
+<a class="index-entry-id" id="index-thisContext"></a>
+</li><li><code class="code">thisContext</code> is a pseudo-variable that represents
+   the top frame of the run-time stack. In other words, it represents
+   the currently executing <code class="code">MethodContext</code> or
+   <code class="code">BlockContext</code>. <code class="code">thisContext</code> is normally not
+   of interest to most programmers, but it is essential for
+   implementing development tools like the Debugger and it is also
+   used to implement exception handling and continuations.
+
+</li></ul>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Method-syntax.html">Method syntax</a>, Previous: <a href="Syntactic-elements.html">Syntactic elements</a>, Up: <a href="Control-Flow-Messaging.html">Control Flow Messaging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

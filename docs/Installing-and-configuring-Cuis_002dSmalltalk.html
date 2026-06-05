@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025, 2026 H. Fernandes with K. Dickey & J. Vuletich
+
+
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
+reviews of the book, suggestions and borrowed texts. Your help is very
+valuable.
+
+
+
+Compilation : June 6, 2026
+
+Documentation source: https://github.com/DrCuis/TheCuisBook 
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<title>Installing and configuring Cuis-Smalltalk (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Installing and configuring Cuis-Smalltalk (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Installing and configuring Cuis-Smalltalk (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Beginnings.html" rel="up" title="Beginnings">
+<link href="Writing-your-first-scripts.html" rel="next" title="Writing your first scripts">
+<link href="Historical-Context.html" rel="prev" title="Historical Context">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+blockquote.indentedblock {margin-right: 0em}
+div.center {text-align:center}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="fr">
+<div class="section-level-extent" id="Installing-and-configuring-Cuis_002dSmalltalk">
+<div class="nav-panel">
+<p>
+Next: <a href="Writing-your-first-scripts.html" accesskey="n" rel="next">Writing your first scripts</a>, Previous: <a href="Historical-Context.html" accesskey="p" rel="prev">Historical Context</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Installing-and-configuring-Cuis_002dSmalltalk-1"><span>1.2 Installing and configuring Cuis-Smalltalk<a class="copiable-link" href="#Installing-and-configuring-Cuis_002dSmalltalk-1"> &para;</a></span></h3>
+<p>Cuis-Smalltalk is an environment and a programming language executed on an
+idealized virtual computer. It is based on two major components:
+the Smalltalk <em class="dfn">virtual machine</em> conceptualizing this virtual
+computer and an <em class="dfn">image</em> representing the state of this computer.
+</p>
+<p>The virtual machine is an executable program running on a dedicated
+host (GNU/Linux, Mac OS X, Windows, etc.). It is called the <em class="dfn">Open
+Smalltalk Virtual Machine</em>, or Squeak <abbr class="acronym">VM</abbr> in short. There are
+different flavors of <abbr class="acronym">VM</abbr>, for various combinations of Operating
+System and CPU architecture. Therefore, one <abbr class="acronym">VM</abbr> compiled
+for Windows on Intel architecture will not work in Linux on
+ARM architecture. You need the specific <abbr class="acronym">VM</abbr> compiled for
+the combination of Operating System and CPU architecture
+your computer is based on.
+</p>
+<p>The <em class="emph">image</em> is a regular file feeding the <abbr class="acronym">VM</abbr> with all the objects
+defining the state of the virtual computer. These objects are
+classes, methods, instances of those classes as numbers, strings,
+windows, debuggers &ndash; whatever existed when the state of the virtual
+computer was saved. An <em class="dfn">image file</em> saved on a given Operating System
+and CPU architecture <strong class="strong">will run identically on another system</strong> 
+requiring only a compatible <abbr class="acronym">VM</abbr> to be used.
+</p>
+<p>The <abbr class="acronym">VM</abbr> allows an image to be restarted with windows in the same locations
+between different operating systems and different CPU architectures
+without recompilation.  This is what <em class="dfn">portability</em> means to us.
+</p>
+<p>What makes Cuis-Smalltalk special is the living entities in the image: its
+class population and arrangement, how the classes inherit from each
+other. The class count is typically less than 700.
+</p>
+<p>To get you started easily, we encourage you to install
+<a class="url" href="https://sites.google.com/view/cuis-university/descargas">Cuis-University</a><a class="footnote" id="DOCF12" href="#FOOT12"><sup>12</sup></a>.
+Here you will find bundles for GNU/Linux, Mac OS X and Windows, for the
+Intel architecture. These bundles differ from the bare Cuis-Smalltalk
+distribution in that they package a customized <abbr class="acronym">VM</abbr>, together with a
+matching Cuis-Smalltalk image that includes additional packages preinstalled
+<a class="footnote" id="DOCF13" href="#FOOT13"><sup>13</sup></a> and some other packages ready to be installed that
+will make your life easier when you follow the examples and exercises in
+the book, or when you explore on your own. By the time you read this
+book, Cuis-Smalltalk will likely have evolved to a newer version, but what you
+learn here should, however, be easily transferable.
+</p>
+<p>To get Cuis-Smalltalk running on your computer, extract the bundle and
+execute the run script on Windows/Linux &ndash; <samp class="file">run.bat</samp> or
+<samp class="file">run.sh</samp> &ndash; on OS X launch the Squeak application. Once you get
+Cuis-Smalltalk running, read the information displayed on the windows. When
+you are done, you can close these windows and adjust Cuis-Smalltalk to your
+preferences.
+</p>
+<p>The Cuis University distribution should work for most common platforms,
+but there are always more platform variants than we can test for.
+<strong class="strong">If you have a problem</strong>, here are two sources of information.  If you
+do <em class="emph">not</em> have a problem, you can ignore these for now.
+</p><ul class="itemize mark-bullet">
+<li>Current installation instructions at the GitHub Cuis Repository:
+<a class="url" href="https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev#running-cuis">https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev#running-cuis</a>
+</li><li>Ask us on the Cuis email group
+<a class="url" href="https://lists.cuis.st/mailman/listinfo/cuis-dev">https://lists.cuis.st/mailman/listinfo/cuis-dev</a>
+</li></ul>
+
+<div class="subsection-level-extent" id="Editing-your-preferences">
+<h4 class="subsection"><span>1.2.1 Editing your preferences<a class="copiable-link" href="#Editing-your-preferences"> &para;</a></span></h4>
+<p>Once you read the information on the default windows, the next thing
+you want to do is to adjust visual properties to fit your preferences
+and needs. To do so, access the World menu
+...Background click &rarr; <code class="command">Preferences...</code>
+then select the pin on the top right of the menu to make it
+permanent. Here you have the most important options: the choice for
+the <strong class="strong">font size</strong>, the <strong class="strong">themes</strong> whenever your prefer light
+or dark colouring. There are other preferences you can explore by
+yourself. Once you are done, do ...World menu &rarr;
+<code class="command">Save</code>... to make your preferences permanent. In this book, we
+keep the default Cuis-Smalltalk theme, we suggest you do the same so your
+environment reflects the book screenshots.
+</p>
+<div class="float" id="ch01_002dPreferences">
+<div class="center"><img class="image" src="ch01-Preferences.png" alt="ch01-Preferences">
+</div><div class="caption"><p><strong class="strong">Figure 1.1: </strong>Set Preferences</p></div></div>
+</div>
+<div class="subsection-level-extent" id="Fun-with-window-placement">
+<h4 class="subsection"><span>1.2.2 Fun with window placement<a class="copiable-link" href="#Fun-with-window-placement"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-tools-workspace"></a>
+<p>The first tool to discover is the <em class="dfn">Workspace</em> tool. It is a kind
+of text editor to key in Smalltalk code you can execute
+immediately. Do ...World menu &rarr;
+<code class="command">Open...</code> &rarr; <code class="command">Workspace</code>...
+</p>
+<p>Now we will ask Cuis-Smalltalk to change the window&rsquo;s placement: click the blue icon
+(top left) to access the window&rsquo;s options menu and experiment with the white
+area to place the Workspace window at the half left of the Cuis-Smalltalk
+environment.
+</p>
+<div class="float" id="ch01_002dimg1a">
+<div class="center"><img class="image" src="ch01-img1a.png" alt="ch01-img1a">
+</div><div class="caption"><p><strong class="strong">Figure 1.2: </strong>Window options</p></div></div>
+<p>The <code class="command">resize...</code> option offers even more freedom to place the
+window. Try the following exercise:
+</p>
+<div class="float" id="exePlacement">
+<blockquote class="indentedblock">
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Use the
+<code class="command">resize...</code> option to place the Workspace centered in the Cuis-Smalltalk
+environment.</em>
+</p></blockquote>
+<div class="caption"><p><strong class="strong">Exercise 1.1: </strong>Middle placement</p></div></div>
+</div>
+</div>
+<div class="footnotes-segment">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT12" href="#DOCF12">(12)</a></h5>
+<p><a class="url" href="https://sites.google.com/view/cuis-university/descargas">https://sites.google.com/view/cuis-university/descargas</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT13" href="#DOCF13">(13)</a></h5>
+<p><a class="url" href="https://github.com/Cuis-Smalltalk/Measures">Measures and
+units (Aconcagua)</a>,
+<a class="url" href="https://github.com/Cuis-Smalltalk/Calendars">Dates and calendars
+(Chaltén)</a>, Improved and additional automated refactorings by way of
+<a class="url" href="https://github.com/hernanwilkinson/LiveTyping/">LiveTyping</a>
+(automatic type annotations), a finder widget,
+<a class="url" href="https://github.com/hernanwilkinson/TDDGuru">TDD Guru</a>,
+<a class="url" href="https://github.com/hernanwilkinson/Cuis-Smalltalk-DenotativeObject">DenotativeObject</a>
+(classless objects)</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Writing-your-first-scripts.html">Writing your first scripts</a>, Previous: <a href="Historical-Context.html">Historical Context</a>, Up: <a href="Beginnings.html">Beginnings</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

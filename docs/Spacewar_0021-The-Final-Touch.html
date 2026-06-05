@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025, 2026 H. Fernandes with K. Dickey & J. Vuletich
+
+
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
+reviews of the book, suggestions and borrowed texts. Your help is very
+valuable.
+
+
+
+Compilation : June 6, 2026
+
+Documentation source: https://github.com/DrCuis/TheCuisBook 
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<title>Spacewar! The Final Touch (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Spacewar! The Final Touch (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Spacewar! The Final Touch (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Code-Management.html" rel="up" title="Code Management">
+<link href="Source-Code-File.html" rel="prev" title="Source Code File">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.center {text-align:center}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="fr">
+<div class="section-level-extent" id="Spacewar_0021-The-Final-Touch">
+<div class="nav-panel">
+<p>
+Previous: <a href="Source-Code-File.html" accesskey="p" rel="prev">Source Code File</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Spacewar_0021-The-Final-Touch-1"><span>9.7 Spacewar! The Final Touch<a class="copiable-link" href="#Spacewar_0021-The-Final-Touch-1"> &para;</a></span></h3>
+
+<p>At this position of the book, you have already written a fair amount
+of the code of the Spacewar! game. However, it is very likely there
+are missing peaces in your code or you may have inconsistency against
+the final source code of the game. Let&rsquo;s take this as an opportunity
+to introduce tools to compare the code installed in the Cuis-Smalltalk image
+and the code from a file, as a plain <samp class="file">.st</samp> fileout or a
+<samp class="file">.pck.st</samp> package file.
+</p>
+<p>First, you need to get the complete package of the Spacewar! game
+found in the <a class="ref" href="Spacewar_0021-Source-Code.html#spacewar_002dpackage">appendix</a>; then, invoke the
+Cuis-Smalltalk <em class="dfn">File List</em> tool ...World menu &rarr;
+<code class="command">Open</code> &rarr; <code class="command">File List</code>, and search for the file
+package <samp class="file">Spacewar!.pck.st</samp> you just downloaded.
+</p>
+<div class="float" id="ch10_002dFileListPackage">
+<div class="center"><img class="image" src="ch10-FileListPackage.png" alt="ch10-FileListPackage">
+</div><div class="caption"><p><strong class="strong">Figure 9.14: </strong>File List on Spacewar! package</p></div></div>
+<p>The <em class="dfn">File List</em> tool has a <code class="command">pck contents</code> button to examine
+its contents against the image code. Press this button, its opens in a new
+window the <em class="dfn">Package contents</em> tool.
+</p>
+<p>On the top, it displays the type of content which are:
+</p>
+<ul class="itemize mark-bullet">
+<li><code class="command">do it</code>. Code snippet executed at the package installation, for example to create new class or method categories defined in the package.
+
+</li><li><code class="command">class definition</code>. Change in a class definition: attributes and parent class.
+
+</li><li><code class="command">class comment</code>.
+
+</li><li><code class="command">method</code>. Change in a method source code or new method.
+
+</li></ul>
+
+<div class="float" id="ch10_002dPackageContents">
+<div class="center"><img class="image" src="ch10-PackageContents.png" alt="ch10-PackageContents">
+</div><div class="caption"><p><strong class="strong">Figure 9.15: </strong>Package contents</p></div></div>
+<p>By default, the tool shows all the contents of the package, without
+considering the difference with code installed in the image. To only
+show the differences, adjust the tool from its contextual menu to
+remove unnecessary information: <code class="command">Remove doIts</code> and <code class="command">Remove
+up-to-date versions</code>. Once you have narrow the list of changes to what
+you need, <code class="command">select all</code> then <code class="command">file in selections</code> to
+install these changes in the image.
+</p>
+<div class="float" id="ch10_002dPackageContentsSelection">
+<div class="center"><img class="image" src="ch10-PackageContentsSelection.png" alt="ch10-PackageContentsSelection">
+</div><div class="caption"><p><strong class="strong">Figure 9.16: </strong>A selection of changes to file in</p></div></div>
+<p>You will get installed with the missing and changed parts of the
+game. To start it, select and execute <code class="code">SpaceWar new
+openInWorld</code> in a <em class="dfn">Workspace</em>.
+</p></div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="Source-Code-File.html">Source Code File</a>, Up: <a href="Code-Management.html">Code Management</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
