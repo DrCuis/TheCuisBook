@@ -195,9 +195,9 @@ valuable.
 @iftex
 @cartouche
 @end iftex
-@ifnotplaintext
-@tie{}@image{note,1cm}
-@end ifnotplaintext
+ @ifnotplaintext
+ @tie{}@image{note,1cm}
+ @end ifnotplaintext
 \aNote\
 @iftex
 @end cartouche

@@ -97,61 +97,55 @@ them.
 
 <p>We want to add the <code class="code">initialize</code> method to our <code class="code">SpaceWar</code>
 class. Of course we need to use the System Browser:
-...World menu &rarr; <code class="command">Open...</code> &rarr;
-<code class="command">Browser</code>...
+(World menu &rarr; <code class="command">Open...</code> &rarr;
+<code class="command">Browser</code>).
 </p>
 <p>As a reminder, proceed as follows (if necessary observe
 <a class="ref" href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed">Figure 2.1</a>):
 </p>
 <ol class="enumerate">
-<li> In the <code class="command">Class Category</code> pane at the far left, scroll down
- to the <code class="command">Spacewar!</code> category, then select it.
+<li> In the <code class="command">Class Category</code> pane at the far left, scroll down to the
+<code class="command">Spacewar!</code> category, then select it.
 
 </li><li> In the <code class="command">Class</code> pane, select the class <code class="code">SpaceWar</code>.
 
-</li><li> Below, click the <code class="command">instance</code> button to expose the
- instance side methods of the <code class="code">SpaceWar</code> class. It is the
- default behavior of the browser anyway, so you can skip this step as
- long as you have not clicked on the <code class="command">class</code> button.
+</li><li> Below, click the <code class="command">instance</code> button to expose the instance side
+methods of the <code class="code">SpaceWar</code> class. It is the default behavior of
+the browser anyway, so you can skip this step as long as you have not
+clicked on the <code class="command">class</code> button.
 
-</li><li> In the <code class="command">Method Category</code> pane, select the category
- <code class="command">-- all --</code>. A method source code template shows up in the pane
- below:
+</li><li> In the <code class="command">Method Category</code> pane, select the category <code class="command">-- all
+--</code>. A method source code template shows up in the pane below:
 <div class="example smallexample">
-<pre class="example-preformatted">messageSelectorAndArgumentNames
-  &quot;comment stating purpose of message&quot;
-  | temporary variable names |
-  statements
+<pre class="example-preformatted">messageSelectorAndArgumentNames &quot;comment stating
+purpose of message&quot; | temporary variable names | statements
 </pre></div>
 
 <p>The template comes in four lines: the method name, a comment, local
-  variable declaration and statements. You can select all and delete
-  it or edit each line of the template as needed.
+variable declaration and statements. You can select all and delete it
+or edit each line of the template as needed.
 </p>
 <p>In our case, we select it all and replace it with the
-  <code class="code">SpaceWar&gt;&gt;initialize</code> source code:
+<code class="code">SpaceWar&gt;&gt;initialize</code> source code:
 </p>
-
 <div class="float" id="initSpacewar">
 <div class="example smallexample">
-<pre class="example-preformatted">SpaceWar&gt;&gt;initialize
-  &quot;We want to capture keyboard and mouse events, 
-  start the game loop(step) and initialize the actors.&quot;
-  super initialize.
-  self setProperty: #'handlesMouseOver:' toValue: true.
-  self startSteppingStepTime: self stepTime.
-  self initializeActors
+<pre class="example-preformatted">SpaceWar&gt;&gt;initialize &quot;We want to capture keyboard and
+mouse events, start the game loop(step) and initialize the
+actors.&quot;  super initialize.  self setProperty: #'handlesMouseOver:'
+toValue: true.  self startSteppingStepTime: self stepTime.  self
+initializeActors
 </pre></div>
 <div class="caption"><p><strong class="strong">Example 5.7: </strong>Initialize <code class="code">SpaceWar</code></p></div></div>
-</li><li> Once edited, save-it with <kbd class="kbd">Ctrl-s</kbd> or
-  ...right click &rarr; <code class="command">Accept (s)</code>...
+</li><li> Once edited, save-it with <kbd class="kbd">Ctrl-s</kbd> or (right click
+&rarr; <code class="command">Accept (s)</code>).
 
 </li></ol>
 
 <p>The newly created method shows up in the <code class="command">Method</code> pane. You can
-  get it categorized automatically too: with the mouse, go over the
-  <code class="command">Method Category</code> pane ...right click &rarr;
-  <code class="command">categorize all uncategorized (c)</code>..
+get it categorized automatically too: with the mouse, go over the
+<code class="command">Method Category</code> pane (right click &rarr;
+<code class="command">categorize all uncategorized (c)</code>).
 </p>
 <div class="float" id="categorizeTeleport">
 <blockquote class="indentedblock">

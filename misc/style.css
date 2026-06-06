@@ -148,6 +148,12 @@ margin-top: 1em;
 margin-bottom: .5em;
 }
 
+img.image
+{
+//    width: 100%;
+//    height: auto;
+}
+
 
 h1, h2, h3, h4, h5
 {

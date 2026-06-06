@@ -70,11 +70,11 @@ Transcript show: 2020 printStringWords capitalized
 @end smallexample
 
 @subheading @ref{stringArith}
-From a System Browser, do from the left panel to the
-right ...@clicksequence{@option{Kernel-Text} @click{} @class{CharacterSequence}
-@click{} @smalltalk{arithmetic}}... the count of methods in the last
-right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
-@method{//} and @method{\\}.
+From a System Browser, do from the left panel to the right
+(@clicksequence{@option{Kernel-Text} @click{}
+@class{CharacterSequence} @click{} @smalltalk{arithmetic}}) the count
+of methods in the last right panel is 6: @method{*}, @method{+},
+@method{-}, @method{/}, @method{//} and @method{\\}.
 
 An alternative is to search for a class with a keyboard shortcut:
 @kbd{Ctrl-Space} from the @cuis{} environment or @kbd{Ctrl-f} from the
@@ -465,14 +465,14 @@ Check the implementations in @class{Boolean}, @class{True} and
 
 @subheading @ref{categorizeTeleport}
 Once the method is edited and saved, in the @label{Method} pane select
-its name @label{teleport:} then do ...@clicksequence{right click
+its name @label{teleport:} then do (@clicksequence{right click
 @click{} @label{more...} @click{} @label{change category...} @click{}
-@label{events}}...
+@label{events}}).
 
 @subheading @ref{categorizeControls}
 In the @label{Method} pane, select one uncategorized control method,
-then do ...@clicksequence{right click @click{} @label{more...}
-@click{} @label{change category} @click{} @label{new...}} key-in
+then do (@clicksequence{right click @click{} @label{more...}  @click{}
+@label{change category} @click{} @label{new...}}) key-in
 @label{control}.
 
 To categorized the remaining uncategorized control methods, repeat but
@@ -824,31 +824,35 @@ key = $s ifTrue: [@return{} ships second fireTorpedo]
 @subheading @ref{twoCategoriesOnePackage}
 @enumerate
 
-  @item In the System Browser, create two class categories: in its
-  most left pane menu select @label{add item... (a)} and key in one
-  category name at a time.
+@item
+In the System Browser, create two class categories: in its most left
+pane menu select @label{add item... (a)} and key in one category name
+at a time.
 
-  @item Create two classes, in each category: @class{TheCuisBook}
-  subclass of @class{Object} and @class{TheBookMorph} subclass of
-  @class{PlacedMorph}.
+@item
+Create two classes, in each category: @class{TheCuisBook} subclass of
+@class{Object} and @class{TheBookMorph} subclass of
+@class{PlacedMorph}.
 
-  The two operations above are doable in one shot. Select any existing
-  category and key in the class definition with the category name:
+The two operations above are doable in one shot. Select any existing
+category and key in the class definition with the category name:
 
-  @smalltalkExample{PlacedMorph subclass: #TheBookMorph
+@smalltalkExample{PlacedMorph subclass: #TheBookMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
    category: '@strong{TheCuisBook-Views}'}
 
-   Once you save the class definition, the @class{TheBookMorph} class is
-   created -- obviously -- but also the @label{TheCuisBook-Views}
-   category!
+Once you save the class definition, the @class{TheBookMorph} class is
+created -- obviously -- but also the @label{TheCuisBook-Views}
+category!
 
-   @item Go to the Installed Packages tool ...@clicksequence{World menu
-   @click{} @label{Open...} @click{} @label{Installed Packages}}...,
-   press the @label{new} button and key in @label{TheCuisBook}.
+@item
+Go to the Installed Packages tool (@clicksequence{World menu @click{}
+@label{Open...} @click{} @label{Installed Packages}}), press the
+@label{new} button and key in @label{TheCuisBook}.
 
-   @item Press the @label{save} button, you are done!
+@item
+Press the @label{save} button, you are done!
 
 @end enumerate

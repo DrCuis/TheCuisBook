@@ -381,8 +381,8 @@ The @dfn{System Browser}, in short, the @dfn{Browser}, is a tool to
 rule all the classes in @cuis{}. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
 
-To access the tool ...@clicksequence{World menu @click{}
-@label{Open...} @click{} @label{Browser}}...
+To access the tool (@clicksequence{World menu @click{} @label{Open...}
+@click{} @label{Browser}}).
 
 @figure{The System Browser,ch02-browserDetailed,12}
 
@@ -532,7 +532,7 @@ pane.
 With the mouse pointer over the class category pane of the Browser --
 the left-most one -- just do:
 
-...@clicksequence{right mouse click @click{} @label{Add Category}}... then
+(@clicksequence{right mouse click @click{} @label{Add Category}}) then
 key in @emph{Spacewar!}
 
 
@@ -551,9 +551,10 @@ the @label{Spacewar!} category:
 We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
 representing the name of the class we want to create. Let's start with
 @smalltalk{#SpaceWar}. To save our class, while over the class
-declaration code do ...@clicksequence{right mouse click @click{}
-@label{Save}}... @cuis{} will ask for your initials and name
-if it hasn't before. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
+declaration code do (@clicksequence{right mouse click @click{}
+@label{Save}}) @cuis{} will ask for your initials and name if it
+hasn't before. Alternatively, you can just do @kbd{Ctrl-s}
+(@emph{@b{S}ave}).
 
 Then simply repeat the process for each of @smalltalk{#SpaceShip},
 @smalltalk{#CentralStar} and @smalltalk{#Torpedo}. If necessary, to
@@ -578,15 +579,15 @@ later. To create our @label{Spacewar!} package and save our game code
 we use the Installed Packages tool.
 
 @enumerate
-  @item Open the @dfn{Installed Packages} tool ...@clicksequence{World
+  @item Open the @dfn{Installed Packages} tool (@clicksequence{World
   menu @click{} @label{Open...} @click{} @label{Installed
-  Packages}}...
+  Packages}}).
 
-  @item On the Installed Packages window, do ...@clicksequence{click @label{new}
-  button @click{} Input @emph{Spacewar!} @click{} @kbd{Return}}...
+  @item On the Installed Packages window, do (@clicksequence{click @label{new}
+  button @click{} Input @emph{Spacewar!} @click{} @kbd{Return}}).
 
-  @item Do ...@clicksequence{select @label{Spacewar!} package @click{}
-  @label{save} button}...
+  @item Do (@clicksequence{select @label{Spacewar!} package @click{}
+  @label{save} button}).
 
 @end enumerate
 
@@ -599,8 +600,8 @@ environment, use the File List tool:
 
 @enumerate
 
-  @item Do ...@clicksequence{World menu @click{}
-  @label{Open...} @click{} @label{File List}}...
+  @item Do (@clicksequence{World menu @click{}
+  @label{Open...} @click{} @label{File List}}).
 
   @item Search for the file @file{Spacewar!.pck.st} and click the
   @label{install package} button  

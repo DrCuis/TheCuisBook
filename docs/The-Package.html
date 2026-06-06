@@ -95,30 +95,27 @@ Next: <a href="Daily-Workflow.html" accesskey="n" rel="next">Daily Workflow</a>,
 <p>A package can hold a set of classes part of the same class category.
 </p>
 <p>Let&rsquo;s save our <code class="command">Morphic-Learning</code> category as a package using
-our Installed Packages Browser.
+our Installed Packages Browser:
 </p>
-<p>...World menu &rarr; <code class="command">Open...</code> &rarr;
-<code class="command">Installed Packages</code>...
+<p>Do (World menu &rarr; <code class="command">Open...</code> &rarr;
+<code class="command">Installed Packages</code>).
 </p>
 <div class="float" id="ch10_002dPackage_002dwith_002drequirement">
 <div class="center"><img class="image" src="ch10-Package-with-requirement.png" alt="ch10-Package-with-requirement">
 </div><div class="caption"><p><strong class="strong">Figure 9.7: </strong>Installed Packages Browser</p></div></div>
-
 <a class="index-entry-id" id="index-package-requirement"></a>
-
 <p>Note that we invoked <code class="code">Feature require: 'SVG'</code>
 earlier. Looking at the package names, we can observe several things
 of note:
 </p>
 <ul class="itemize mark-bullet">
-<li>Each package is versioned; <code class="command">SVG</code> has version
-  1, revision 19.
+<li>Each package is versioned; <code class="command">SVG</code> has version 1, revision 19.
   
 </li><li>There are packages <code class="command">YAXO</code>, <code class="command">Color-Extras</code> and
-  <code class="command">LinearAlgebra</code> which we never asked for.
+<code class="command">LinearAlgebra</code> which we never asked for.
   
 </li><li>Looking at the lower pane, note that those packages are
-  <strong class="strong">required</strong> by the package <code class="command">SVG</code>.
+<strong class="strong">required</strong> by the package <code class="command">SVG</code>.
   
 </li></ul>
 
@@ -247,8 +244,8 @@ included and it is lost when quitting Cuis-Smalltalk. To include it in our
 package we categorize it in a method category with the
 <code class="command">*TheCuisBook</code> prefix. <code class="command">*TheCuisBook-printing</code> is a good
 candidate. In the System Browser method pane, over
-<code class="code">printStringToc</code>, do ...Contextual menu &rarr;
-<code class="command">more...</code> &rarr; <code class="command">change category...</code> and key in
+<code class="code">printStringToc</code>, do (Contextual menu &rarr;
+<code class="command">more...</code> &rarr; <code class="command">change category...</code>) and key in
 <code class="command">*TheCuisBook-printing</code>.
 </p>
 <p>Now the Change Sorter writes about <code class="code">Integer&gt;&gt;printStringToc</code>:
@@ -266,7 +263,7 @@ prefixed with a <code class="command">*</code>.
 </p>
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="note.png" alt="note">
-In addition to adding a package preload <em class="emph">requirement</em>,
+ In addition to adding a package preload <em class="emph">requirement</em>,
 you can also select a requirement and <code class="command">delete</code> or <code class="command">update</code>
 it using the buttons at the lower right.  Sometimes a package changes
 which your code depends on and you have to change your code to accord.

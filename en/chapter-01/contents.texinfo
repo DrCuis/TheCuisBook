@@ -224,16 +224,16 @@ do @emph{not} have a problem, you can ignore these for now.
 @subsection Editing your preferences
 Once you read the information on the default windows, the next thing
 you want to do is to adjust visual properties to fit your preferences
-and needs. To do so, access the World menu
-...@clicksequence{Background click @click{} @label{Preferences...}}
-then select the pin on the top right of the menu to make it
-permanent. Here you have the most important options: the choice for
-the @strong{font size}, the @strong{themes} whenever your prefer light
-or dark colouring. There are other preferences you can explore by
-yourself. Once you are done, do ...@clicksequence{World menu @click{}
-@label{Save}}... to make your preferences permanent. In this book, we
-keep the default @cuis{} theme, we suggest you do the same so your
-environment reflects the book screenshots.
+and needs. To do so, access the World menu (@clicksequence{Background
+click @click{} @label{Preferences...}}) then select the pin on the top
+right of the menu to make it permanent. Here you have the most
+important options: the choice for the @strong{font size}, the
+@strong{themes} whenever your prefer light or dark colouring. There
+are other preferences you can explore by yourself. Once you are done,
+do (@clicksequence{World menu @click{} @label{Save}}) to make your
+preferences permanent. In this book, we keep the default @cuis{}
+theme, we suggest you do the same so your environment reflects the
+book screenshots.
 
 @figure{Set Preferences,ch01-Preferences,12}
 
@@ -241,8 +241,8 @@ environment reflects the book screenshots.
 @cindex tools @subentry workspace
 The first tool to discover is the @dfn{Workspace} tool. It is a kind
 of text editor to key in Smalltalk code you can execute
-immediately. Do ...@clicksequence{World menu @click{}
-@label{Open...} @click{} @label{Workspace}}...
+immediately. Do (@clicksequence{World menu @click{} @label{Open...}
+@click{} @label{Workspace}}).
 
 Now we will ask @cuis{} to change the window's placement: click the blue icon
 (top left) to access the window's options menu and experiment with the white
@@ -274,12 +274,12 @@ Transcript show: 'Hello World!'}
 
 @cindex tools @subentry transcript
 To execute this code, select it with the mouse and over it do
-...@clicksequence{right mouse click @click{} @label{Do it (d)}}...
-You may now see nothing happen! Indeed to see the output, you need a
+(@clicksequence{right mouse click @click{} @label{Do it (d)}}).  You
+may now see nothing happen! Indeed to see the output, you need a
 @dfn{Transcript} window to be visible.  The @class{Transcript} is a
 place where a programmer can send information to the user as we are
-doing here. Do ...@clicksequence{World menu @click{} @label{Open...}
-@click{} @label{Transcript}}... and execute the code again.
+doing here. Do (@clicksequence{World menu @click{} @label{Open...}
+@click{} @label{Transcript}}) and execute the code again.
 
 @figure{Transcript window with output,ch01-img2,3}
 

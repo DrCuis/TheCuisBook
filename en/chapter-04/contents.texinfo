@@ -46,42 +46,44 @@ options:
 @cindex keyboard shortcut @subentry browse protocol (@kbd{Ctrl-p})
 @enumerate
 
-   @item @strong{Explore the protocol.} In the class pane of the
-   browser, do ...@clicksequence{select @class{String} class @click{}
-   right mouse button @click{} @label{Browse protocol
-   (p)}}... Alternatively, use the keyboard shortcut @kbd{Ctrl-p}.
+@item
+@strong{Explore the protocol.} In the class pane of the browser, do
+(@clicksequence{select @class{String} class @click{} right mouse
+button @click{} @label{Browse protocol (p)}}). Alternatively, use the
+keyboard shortcut @kbd{Ctrl-p}.
 
-   @figure{Browse @class{String} protocol,ch03-browseProtocol,8}
+@figure{Browse @class{String} protocol,ch03-browseProtocol,8}
 
-   The new window is a protocol browser for the @class{String}
-   class. At the left, we see a hierarchy of the @class{String}'s ancestor
-   classes.
-   At the right are the method selectors for strings and, in parenthesis,
-   the class where they are defined.  Methods defined in class
-   @class{String} itself are in bold characters.
+The new window is a protocol browser for the @class{String} class. At
+the left, we see a hierarchy of the @class{String}'s ancestor classes.
+At the right are the method selectors for strings and, in parenthesis,
+the class where they are defined.  Methods defined in class
+@class{String} itself are in bold characters.
 
-   Selecting one class there only shows the protocol starting from
-   this class down to the @class{String} class. If you select
-   @class{String} in the left panel, you only see methods defined in
-   the @class{String} class itself.
+Selecting one class there only shows the protocol starting from this
+class down to the @class{String} class. If you select @class{String}
+in the left panel, you only see methods defined in the @class{String}
+class itself.
 
-   In @ref{ch03-browseProtocol}, no specific class is selected,
-   therefore the whole @class{String} protocol is listed at the
-   right. The method @method{before:} implemented in
-   @class{SequenceableCollection} is selected and its source code is
-   displayed on the large bottom pane.
+In @ref{ch03-browseProtocol}, no specific class is selected, therefore
+the whole @class{String} protocol is listed at the right. The method
+@method{before:} implemented in @class{SequenceableCollection} is
+selected and its source code is displayed on the large bottom pane.
 
 @cindex keyboard shortcut @subentry browse hierarchy (@kbd{Ctrl-h})
-   @item @strong{Explore the hierarchy.} In the class pane of the
-   browser, do ...@clicksequence{select @class{String} class @click{}
-   right mouse button @click{} @label{Browse hierarchy
-   (h)}}... Alternatively, use the keyboard shortcut @kbd{Ctrl-h} or
-   the button @label{hierarchy} on the system browser.
 
-   @figure{Browse the @class{String} hierarchy,ch03-browseHierarchy,8}
+@item
 
-   The hierarchy browser is very like the system browser with only two
-   differences:
+@strong{Explore the hierarchy.} In the class pane of the browser, do
+(@clicksequence{select @class{String} class @click{} right mouse
+button @click{} @label{Browse hierarchy (h)}}). Alternatively, use the
+keyboard shortcut @kbd{Ctrl-h} or the button @label{hierarchy} on the
+system browser.
+
+@figure{Browse the @class{String} hierarchy,ch03-browseHierarchy,8}
+
+The hierarchy browser is very like the system browser with only two
+differences:
 
 @cindex class @subentry category
    @itemize

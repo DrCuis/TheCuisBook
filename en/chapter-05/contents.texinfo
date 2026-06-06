@@ -438,57 +438,57 @@ them.
 
 We want to add the @method{initialize} method to our @class{SpaceWar}
 class. Of course we need to use the System Browser:
-...@clicksequence{World menu @click{} @label{Open...} @click{}
-@label{Browser}}...
+(@clicksequence{World menu @click{} @label{Open...} @click{}
+@label{Browser}}).
 
 As a reminder, proceed as follows (if necessary observe
 @ref{ch02-browserDetailed}):
 
 @enumerate
 
- @item In the @label{Class Category} pane at the far left, scroll down
- to the @label{Spacewar!} category, then select it.
+@item
+In the @label{Class Category} pane at the far left, scroll down to the
+@label{Spacewar!} category, then select it.
 
- @item In the @label{Class} pane, select the class @class{SpaceWar}.
+@item
+In the @label{Class} pane, select the class @class{SpaceWar}.
 
- @item Below, click the @label{instance} button to expose the
- instance side methods of the @class{SpaceWar} class. It is the
- default behavior of the browser anyway, so you can skip this step as
- long as you have not clicked on the @label{class} button.
+@item
+Below, click the @label{instance} button to expose the instance side
+methods of the @class{SpaceWar} class. It is the default behavior of
+the browser anyway, so you can skip this step as long as you have not
+clicked on the @label{class} button.
 
- @item In the @label{Method Category} pane, select the category
- @label{-- all --}. A method source code template shows up in the pane
- below:
-@smalltalkExample{messageSelectorAndArgumentNames
-  "comment stating purpose of message"
-  | temporary variable names |
-  statements}
+@item
+In the @label{Method Category} pane, select the category @label{-- all
+--}. A method source code template shows up in the pane below:
+@smalltalkExample{messageSelectorAndArgumentNames "comment stating
+purpose of message" | temporary variable names | statements}
 
-  The template comes in four lines: the method name, a comment, local
-  variable declaration and statements. You can select all and delete
-  it or edit each line of the template as needed.
+The template comes in four lines: the method name, a comment, local
+variable declaration and statements. You can select all and delete it
+or edit each line of the template as needed.
 
-  In our case, we select it all and replace it with the
-  @method{SpaceWar>>initialize} source code:
+In our case, we select it all and replace it with the
+@method{SpaceWar>>initialize} source code:
 
+@smalltalkExampleCaption{Initialize @class{SpaceWar},
+initSpacewar,SpaceWar>>initialize "We want to capture keyboard and
+mouse events@comma{} start the game loop(step) and initialize the
+actors."  super initialize.  self setProperty: #'handlesMouseOver:'
+toValue: true.  self startSteppingStepTime: self stepTime.  self
+initializeActors}
 
-  @smalltalkExampleCaption{Initialize @class{SpaceWar}, initSpacewar,SpaceWar>>initialize
-  "We want to capture keyboard and mouse events@comma{} 
-  start the game loop(step) and initialize the actors."
-  super initialize.
-  self setProperty: #'handlesMouseOver:' toValue: true.
-  self startSteppingStepTime: self stepTime.
-  self initializeActors}
-
-  @item Once edited, save-it with @kbd{Ctrl-s} or
-  ...@clicksequence{right click @click{} @label{Accept (s)}}...
+@item
+Once edited, save-it with @kbd{Ctrl-s} or (@clicksequence{right click
+@click{} @label{Accept (s)}}).
 
 @end enumerate
 
 The newly created method shows up in the @label{Method} pane. You can
-  get it categorized automatically too: with the mouse, go over the
-  @label{Method Category} pane ...@clicksequence{right click @click{}
-  @label{categorize all uncategorized (c)}}..
+get it categorized automatically too: with the mouse, go over the
+@label{Method Category} pane (@clicksequence{right click @click{}
+@label{categorize all uncategorized (c)}}).
 
 @exercise{Categorize a method,categorizeTeleport, @emph{In the
 @class{SpaceWar} class, add the @method{teleport:} method as defined

@@ -91,14 +91,13 @@ provides many drawing operations for morphs to use. You can play with
 the various drawing operations and their parameters, and see the
 result. If you make a mistake, and the @method{drawOn:} method fails,
 you'll get a red and yellow error box. After fixing your
-@method{drawOn:} method, do ...@clicksequence{World menu @click{}
-@label{Debug...} @click{} @label{Start drawing all again}}.. to get
+@method{drawOn:} method, do (@clicksequence{World menu @click{}
+@label{Debug...} @click{} @label{Start drawing all again}}. to get
 your morph redrawn correctly.
 
 @exercise{Cross morph, exeCrossMorph,@emph{How will you modify our
 line morph so it draws itself as a cross with an extent of 200
 pixels?}}
-
 
 @subsection Morph you can move
 @cindex morph @subentry movable
@@ -320,8 +319,8 @@ Now, let's try something different. Grab one of your
 @class{LineExampleMorph}. With the halo, zoom it until it is about the
 size of your triangle. Now place the triangle above your line. Open a
 halo on the triangle, click on the @label{Menu} handle and select
-...@clicksequence{@label{embed into} @click{}
-@label{LineExampleMorph}}. This makes the triangle a submorph of the
+(@clicksequence{@label{embed into} @click{}
+@label{LineExampleMorph}}). This makes the triangle a submorph of the
 line. Now, if you move, scale or rotate the line, the triangle also
 gets adjusted.
 

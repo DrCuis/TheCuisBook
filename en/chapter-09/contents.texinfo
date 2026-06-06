@@ -35,8 +35,8 @@ environment, Workspace contents, newly written classes and methods,
 existing instances including the visual morphs, a debugging session
 with a System Browser, an Inspector, etc.
 
-At any time, the user can save the image with ...@clicksequence{World
-menu @click{} @label{Save}}... Alternatively @label{Save as...} saves
+At any time, the user can save the image with (@clicksequence{World
+menu @click{} @label{Save}}). Alternatively @label{Save as...} saves
 the image under an alternate name provided by the user.
 
 Saving the image is the easiest and most straightforward method to
@@ -72,16 +72,17 @@ named @label{TheCuisBook} and within @class{TheBook} class:
 
 @itemize
 
-  @item Over the class category pane of System Browser (at the most
-   left), do ...@clicksequence{Right click @click{} @label{add
-   items... (a)}}... key in @label{TheCuisBook}.
+@item
+Over the class category pane of System Browser (at the most left), do
+(@clicksequence{Right click @click{} @label{add items... (a)}}) key in
+@label{TheCuisBook}.
 
-  @item Select this new class category and create the class
-  @class{TheBook} as a kind of @class{Object}: select the
-  @label{TheCuisBook} category then in the source code below edit the
-  class template to replace @smalltalk{#NameOfClass} with
-  @smalltalk{#TheBook} then save the class definition with
-  @kbd{Ctrl-s}.
+@item
+Select this new class category and create the class @class{TheBook} as
+a kind of @class{Object}: select the @label{TheCuisBook} category then
+in the source code below edit the class template to replace
+@smalltalk{#NameOfClass} with @smalltalk{#TheBook} then save the class
+definition with @kbd{Ctrl-s}.
   
 @end itemize
 
@@ -107,43 +108,45 @@ From there you have three options:
 
 @itemize
 
-  @item @strong{Restore lost changes automatically.} @cuis{} will
-  apply all the changes: new class definitions, new methods; edited
-  class definitions and method source code; executed code (in
-  Workspaces or any places where code can be executed). Often this is
-  not really what you want to do, particularly the executed code.
+@item
+@strong{Restore lost changes automatically.} @cuis{} will apply all
+the changes: new class definitions, new methods; edited class
+definitions and method source code; executed code (in Workspaces or
+any places where code can be executed). Often this is not really what
+you want to do, particularly the executed code.
 
 @cindex tools @subentry lost changes 
-  @item @strong{Restore lost changes manually.} In the subsequent
-  @label{Lost changes} window you are presented with the unsaved
-  changes, one per line, in chronological order, with the older ones
-  at the top of the list. You select each change (line) you want to
-  restore, then you apply your selection with the @label{file in
-  selections} button.
+@item
+@strong{Restore lost changes manually.} In the subsequent @label{Lost
+changes} window you are presented with the unsaved changes, one per
+line, in chronological order, with the older ones at the top of the
+list. You select each change (line) you want to restore, then you
+apply your selection with the @label{file in selections} button.
 
-  @figure{Manually select the changes to file in,ch10-RecoverLostChanges2,9}
+@figure{Manually select the changes to file in,ch10-RecoverLostChanges2,9}
 
-  To file-in the changes related to the creation of the
-  @class{TheBook} class but not the executed code in the Workspace, select
-  the two lines related to class definition.
+To file-in the changes related to the creation of the @class{TheBook}
+class but not the executed code in the Workspace, select the two lines
+related to class definition.
 
-  The contextual menu (mouse right click) of the @label{Lost changes}
-  window offers a lot of options to filter the changes. Useful when
-  the batch of lost changes is important.
+The contextual menu (mouse right click) of the @label{Lost changes}
+window offers a lot of options to filter the changes. Useful when the
+batch of lost changes is important.
 
-  @item @strong{Nothing.} No changes are restored. Keep in mind that
-  unsaved changes aren't discarded until you save your image.
+@item
+@strong{Nothing.} No changes are restored. Keep in mind that unsaved
+changes aren't discarded until you save your image.
 
 @cindex tools @subentry recent changes
-  In case you change your mind and you want to recover changes, do
-  ...@clicksequence{World menu @click{} @label{Changes...}  @click{}
-  @label{Recently logged Changes...}}.
+In case you change your mind and you want to recover changes, do
+(@clicksequence{World menu @click{} @label{Changes} @click{}
+@label{Recently logged Changes...}}).
 
-  The system presents you a list of image snapshots tagged with a date
-  stamp. Pick up the one occurring just before you lost your code,
-  most likely at the top of the list. Then in the @label{Recent
-  changes} window, you proceed as described earlier to cherry pick the
-  changes to restore.
+The system presents you a list of image snapshots tagged with a date
+stamp. Pick up the one occurring just before you lost your code, most
+likely at the top of the list. Then in the @label{Recent changes}
+window, you proceed as described earlier to cherry pick the changes to
+restore.
 
 @end itemize
 
@@ -155,8 +158,8 @@ On a fresh @cuis{} installation, each code you edit in the System
 Browser is recorded in a @dfn{Change Set},
 
 You browse a change set with a tool named the @dfn{Change Sorter}:
-...@clicksequence{World menu @click{} @label{Changes...}  @click{}
-@label{Change Sorter}}...
+(@clicksequence{World menu @click{} @label{Changes} @click{}
+@label{Change Sorter}}).
 
 @figure{The Change Sorter@comma{} class edit,ch10-ChangeSet1,8}
 
@@ -200,8 +203,8 @@ pages
 @cindex tools @subentry file list
 
 To load this change set back in a new image, you use the @dfn{File
-List} tool ...@clicksequence{World menu @click{} @label{Open} @click{}
-@label{File List}}... Browse the folder containing the change set file
+List} tool (@clicksequence{World menu @click{} @label{Open} @click{}
+@label{File List}}). Browse the folder containing the change set file
 to load, then select it, from there you have three options to
 manipulate it.
 
@@ -251,30 +254,30 @@ manage the code: a package.
 A package can hold a set of classes part of the same class category.
 
 Let's save our @label{Morphic-Learning} category as a package using
-our Installed Packages Browser.
+our Installed Packages Browser:
 
-...@clicksequence{World menu @click{} @label{Open...} @click{}
-@label{Installed Packages}}...
+Do (@clicksequence{World menu @click{} @label{Open...} @click{}
+@label{Installed Packages}}).
 
 @figure{Installed Packages Browser,ch10-Package-with-requirement,11}
 
-
 @cindex package @subentry requirement
-
 Note that we invoked @smalltalk{Feature require: 'SVG'}
 earlier. Looking at the package names, we can observe several things
 of note:
 
 @itemize
 
-  @item Each package is versioned; @label{SVG} has version
-  1, revision 19.
+@item
+Each package is versioned; @label{SVG} has version 1, revision 19.
   
-  @item There are packages @label{YAXO}, @label{Color-Extras} and
-  @label{LinearAlgebra} which we never asked for.
+@item
+There are packages @label{YAXO}, @label{Color-Extras} and
+@label{LinearAlgebra} which we never asked for.
   
-  @item Looking at the lower pane, note that those packages are
-  @strong{required} by the package @label{SVG}.
+@item
+Looking at the lower pane, note that those packages are
+@strong{required} by the package @label{SVG}.
   
 @end itemize
 
@@ -384,8 +387,8 @@ included and it is lost when quitting @cuis{}. To include it in our
 package we categorize it in a method category with the
 @label{*TheCuisBook} prefix. @label{*TheCuisBook-printing} is a good
 candidate. In the System Browser method pane, over
-@method{printStringToc}, do ...@clicksequence{Contextual menu @click{}
-@label{more...} @click{} @label{change category...}} and key in
+@method{printStringToc}, do (@clicksequence{Contextual menu @click{}
+@label{more...} @click{} @label{change category...}}) and key in
 @label{*TheCuisBook-printing}.
 
 Now the Change Sorter writes about @method{Integer>>printStringToc}:
@@ -671,9 +674,9 @@ Cuis-Smalltalk.
 Files with extension @file{.st} contained serialized Smalltalk code --
 classes and methods. They are created when you @dfn{file out} a
 Smalltalk system category, class or method. You can serialize code in
-@clicksequence{the System Browser by selecting a @strong{system
+(@clicksequence{the System Browser by selecting a @strong{system
 category}, @strong{class} or @strong{method} @click{} right click and
-select @label{fileOut} from the context menu}.
+select @label{fileOut} from the context menu}).
 
 Unlike @file{.pck.st} files, @file{.st} files don't contain any
 dependencies, description, or package information, only serialized
@@ -691,52 +694,55 @@ help of the context menu.
 @node Spacewar! The Final Touch
 @section Spacewar! The Final Touch
 
-At this position of the book, you have already written a fair amount
-of the code of the Spacewar! game. However, it is very likely there
-are missing peaces in your code or you may have inconsistency against
+At this point in the book, you have already written a fair amount
+of code for the Spacewar! game. However, it is very likely there
+are missing pieces in your code, or you may have inconsistencies with
 the final source code of the game. Let's take this as an opportunity
 to introduce tools to compare the code installed in the @cuis{} image
-and the code from a file, as a plain @file{.st} fileout or a
+with the code from a file, such as a plain @file{.st} fileout or a
 @file{.pck.st} package file.
 
 First, you need to get the complete package of the Spacewar! game
-found in the @ref{spacewar-package,appendix,appendix}; then, invoke the
-@cuis{} @dfn{File List} tool ...@clicksequence{World menu @click{}
-@label{Open} @click{} @label{File List}}, and search for the file
-package @file{Spacewar!.pck.st} you just downloaded.
+found in the @ref{spacewar-package,,appendix}; then, invoke the
+@cuis{} @dfn{File List} tool (@clicksequence{World menu @click{}
+@label{Open} @click{} @label{File List}}) and search for the
+@file{Spacewar!.pck.st} package file you just downloaded.
 
 @figure{File List on Spacewar! package,ch10-FileListPackage,11}
 
 The @dfn{File List} tool has a @label{pck contents} button to examine
-its contents against the image code. Press this button, its opens in a new
-window the @dfn{Package contents} tool.
+its contents against the image code. Pressing this button opens the
+@dfn{Package contents} tool in a new window.
 
-On the top, it displays the type of content which are:
+At the top, it displays the types of content, which are:
 
-@itemize
+@itemize @bullet
+@item
+@label{do it}. A code snippet executed during package installation (for example, to create new class or method categories defined in the package).
 
-  @item @label{do it}. Code snippet executed at the package installation, for example to create new class or method categories defined in the package.
+@item
+@label{class definition}. A change in a class definition, such as attributes and parent classes.
 
-  @item @label{class definition}. Change in a class definition: attributes and parent class.
+@item
+@label{class comment}. A change in a class comment.
 
-  @item @label{class comment}.
-
-  @item @label{method}. Change in a method source code or new method.
-
+@item
+@label{method}. A change in a method's source code, or a completely new method.
 @end itemize
 
-@figure{Package contents, ch10-PackageContents,11}
+@figure{Package contents,ch10-PackageContents,11}
 
-By default, the tool shows all the contents of the package, without
-considering the difference with code installed in the image. To only
-show the differences, adjust the tool from its contextual menu to
-remove unnecessary information: @label{Remove doIts} and @label{Remove
-up-to-date versions}. Once you have narrow the list of changes to what
-you need, @label{select all} then @label{file in selections} to
-install these changes in the image.
+By default, the tool shows all the contents of the package without
+considering the differences with the code installed in the image. To show
+only the differences, use the tool's contextual menu to remove
+unnecessary information: choose @label{Remove doIts} and @label{Remove
+up-to-date versions}. Once you have narrowed the list of changes to what
+you need, choose @label{select all} and then @label{file in selections} to
+install these changes into the image.
 
 @figure{A selection of changes to file in,ch10-PackageContentsSelection,10}
 
-You will get installed with the missing and changed parts of the
-game. To start it, select and execute @smalltalk{SpaceWar new
-openInWorld} in a @dfn{Workspace}.
+The missing and changed parts of the game will now be installed.
+To start it, select and execute @smalltalk{SpaceWar new openInWorld}
+in a @dfn{Workspace}.
+

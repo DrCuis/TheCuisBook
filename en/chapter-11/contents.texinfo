@@ -119,11 +119,11 @@ How does that look?
 
 @figure{Rename @method{nose} to @method{noseDirection},ch11-06-noseDirection,10}
 
-@cuisNote{@clicksequence{World menu @click{} @label{Help}} is your friend.
-The @label{Terse Guide to Cuise} gives access to a large sample
-of code usages. The @label{Class Comment Browser} is an alternate
-way to find interesting class information.  There are also more notes
-on code maganement and how we use GitHub.}
+@cuisNote{(@clicksequence{World menu @click{} @label{Help}}) is your
+friend.  The @label{Terse Guide to Cuise} gives access to a large
+sample of code usages. The @label{Class Comment Browser} is an
+alternate way to find interesting class information.  There are also
+more notes on code maganement and how we use GitHub.}
 
 @cuisNote{We want to share with you! Please visit packages at the main @cuis{}
 repository at @url{https://github.com/Cuis-Smalltalk}, search GitHub
