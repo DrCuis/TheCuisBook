@@ -369,7 +369,7 @@ done with message sending (See @ref{motionEquations}):
 
 @node A brief introduction to the system Browser
 @section A brief introduction to the system Browser
-@cindex tools @subentry system browser
+@cindex tools @seealso{browser}
 @cindex browser
 
 Smalltalk organizes instance behaviors using classes.  

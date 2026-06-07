@@ -198,7 +198,7 @@ Let's look briefly at another way of doing this.
 @node Halt!
 @section Halt!
 
-@cindex breakpoint @seeentry{Tools, debugger}
+@cindex breakpoint @seeentry{tools, debugger}
 @cindex tools @subentry debugger @subentry breakpoint
 @cindex @method{halt}
 
