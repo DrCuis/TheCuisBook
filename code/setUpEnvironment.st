@@ -7,7 +7,7 @@ Transcript
 "Install change set"
 ChangeSet installNewUpdates.
 "System configurations"
-Utilities setAuthorName: 'Oliver Lawrence Dupont' initials: 'old'.
+Utilities setAuthorInitials: 'Oliver Lawrence Dupont' name: 'old'.
 Preferences at: #logDebuggerStackToFile put: true.
 Preferences at: #autoNumberUserChanges put: false.
 Preferences at: #focusFollowsMouse put: true.
